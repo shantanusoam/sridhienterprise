@@ -1,13 +1,13 @@
 "use client";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 // import { useInView } from "react-intersection-observer";
-import ProductCategories from "@/components/ProductCategories";
+// import ProductCategories from "@/components/ProductCategories";
 import Testimonials from "@/components/Testimonials";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import {
@@ -313,10 +313,10 @@ export default function Home() {
               <h2 className={`text-3xl font-bold mb-8 text-${COLORS.primary}`}>
                 Ready to Get Started?
               </h2>
-              <p className={`mb-8 text-${COLORS.text}`}>
+              {/* <div className={`mb-8 text-${COLORS.text}`}>
                 Contact us today to learn more about how Sridhi Enterprises can
-                serve your canteen's needs.
-              </p>
+                serve your canteen's needs
+              </div> */}
               <Link href="/contact">
                 <Button size="lg">Contact Us</Button>
               </Link>

@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
-import { COLORS } from '@/lib/constants';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+// import { COLORS } from '@/lib/constants';
 
 const slides = [
   {
     image:
-      'https://bhikharamchandmal.in/pub/media/wysiwyg/slider/finni-banner.png',
-    title: 'Connecting Quality Manufacturers to Government Services',
-    subtitle: 'Trusted Distribution for Paramilitary and Government Canteens',
+      "https://bhikharamchandmal.in/pub/media/wysiwyg/slider/finni-banner.png",
+    title: "Connecting Quality Manufacturers to Government Services",
+    subtitle: "Trusted Distribution for Paramilitary and Government Canteens",
   },
   {
-    image: 'https://bhikharamchandmal.in/pub/media/wysiwyg/slider/banner-1.jpg',
-    title: 'Ensuring Quality and Reliability',
-    subtitle: 'Serving the Nation with Pride',
+    image: "https://bhikharamchandmal.in/pub/media/wysiwyg/slider/banner-1.jpg",
+    title: "Ensuring Quality and Reliability",
+    subtitle: "Serving the Nation with Pride",
   },
   {
     image:
-      'https://wpvaadiherbals.b-cdn.net/wp-content/uploads/2015/09/slide2.jpg',
-    title: 'Nationwide Distribution Network',
-    subtitle: 'Efficient Delivery Across India',
+      "https://wpvaadiherbals.b-cdn.net/wp-content/uploads/2015/09/slide2.jpg",
+    title: "Nationwide Distribution Network",
+    subtitle: "Efficient Delivery Across India",
   },
 ];
 

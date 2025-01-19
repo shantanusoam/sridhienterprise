@@ -1,14 +1,13 @@
-import './globals.css';
-import { Inter } from 'next/font/google';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { COLORS } from '@/lib/constants';
+import "./globals.css";
+import { Inter } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Sridhi Enterprises',
-  description: 'Connecting Quality Manufacturers to Government Services',
+  title: "Sridhi Enterprises",
+  description: "Connecting Quality Manufacturers to Government Services",
 };
 
 export default function RootLayout({

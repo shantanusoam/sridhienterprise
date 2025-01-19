@@ -6,7 +6,7 @@ import { COLORS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
+// import { useToast } from "@/components/ui/use-toast";
 
 // export const metadata: Metadata = {
 //   title: 'Contact Us | Sridhi Enterprises',
@@ -20,7 +20,7 @@ export default function ContactPage() {
     phone: "",
     message: "",
   });
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,10 +36,10 @@ export default function ContactPage() {
     e.preventDefault();
     // Here you would typically send the form data to your backend
     console.log("Form submitted:", formData);
-    toast({
-      title: "Form Submitted",
-      description: "We've received your message and will get back to you soon.",
-    });
+    // toast({
+    //   title: "Form Submitted",
+    //   description: "We've received your message and will get back to you soon.",
+    // });
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -50,10 +50,10 @@ export default function ContactPage() {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <p className={`mb-4 text-${COLORS.text}`}>
+          {/* <div className={`mb-4 text-${COLORS.text}`}>
             We're here to help and answer any question you might have. We look
             forward to hearing from you.
-          </p>
+          </div> */}
           <div className={`bg-${COLORS.white} p-6 rounded-lg shadow-md mb-6`}>
             <h2
               className={`text-2xl font-semibold mb-4 text-${COLORS.primary}`}
