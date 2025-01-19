@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { COLORS } from '@/lib/constants';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { COLORS } from "@/lib/constants";
 
 const Footer = () => {
   return (
-    <footer className={`bg-${COLORS.primary}  py-12`}>
+    <footer className={`bg-${COLORS.primary} bg-white  py-12`}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <motion.div
@@ -18,7 +18,7 @@ const Footer = () => {
           >
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
-              {['Home', 'About', 'Products', 'Services', 'Contact'].map(
+              {["Home", "About", "Products", "Services", "Contact"].map(
                 (item) => (
                   <Link
                     key={item}
