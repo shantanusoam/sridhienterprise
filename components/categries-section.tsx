@@ -38,7 +38,7 @@ const categories = [
     image:
       "https://cdn.shopify.com/s/files/1/0086/9036/8627/files/sa_my_SPF_Banner.jpg?v=1685358980",
     color: "#96CEB4",
-    link: "/https://vaadiherbals.in/",
+    link: "https://vaadiherbals.in/",
   },
   {
     title: "Hygiene Products",
