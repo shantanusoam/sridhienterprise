@@ -12,7 +12,7 @@ const categories = [
     image:
       "https://cdn.shopify.com/s/files/1/0268/9577/7903/files/3_480x480.jpg?v=1586949302",
     color: "#FF6B6B",
-    link: "/products/kitchenware",
+    link: "https://www.pnbkitchenmate.com/",
   },
   {
     title: "Snacks & Sweets",
@@ -20,7 +20,7 @@ const categories = [
       "Authentic Indian sweets and snacks that bring traditional flavors to your table.",
     image: "https://bhikharamchandmal.in/pub/media/wysiwyg/slider/banner-2.jpg",
     color: "#4ECDC4",
-    link: "/products/snacks",
+    link: "https://bhikharamchandmal.in/",
   },
   {
     title: "Textiles",
@@ -29,7 +29,7 @@ const categories = [
     image:
       "https://cdn.shopify.com/s/files/1/0683/0712/4528/files/Product-1.webp?v=1672294968",
     color: "#45B7D1",
-    link: "/products/textiles",
+    link: "https://www.sarlamills.in/",
   },
   {
     title: "Herbal Care",
@@ -38,7 +38,7 @@ const categories = [
     image:
       "https://cdn.shopify.com/s/files/1/0086/9036/8627/files/sa_my_SPF_Banner.jpg?v=1685358980",
     color: "#96CEB4",
-    link: "/products/herbal",
+    link: "/https://vaadiherbals.in/",
   },
   {
     title: "Hygiene Products",
@@ -47,7 +47,7 @@ const categories = [
     image:
       "https://www.7softindia.com/wp/wp-content/uploads/2023/01/website-1.jpg",
     color: "#D4A5A5",
-    link: "/products/hygiene",
+    link: "https://www.7softindia.com/wp/",
   },
 ];
 

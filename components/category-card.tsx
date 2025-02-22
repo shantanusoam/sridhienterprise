@@ -46,7 +46,7 @@ export function CategoryCard({
             className="object-cover transition-transform duration-300 group-hover:scale-110"
           />
         </div>
-        <div className="absolute inset-0 z-20 p-6 flex flex-col justify-end">
+        <div className="absolute inset-0 z-20 p-6 flex flex-col bg-gradient-to-t from-gray-900 justify-end">
           <div className="flex items-center justify-between">
             <h3 className="text-2xl font-bold text-white">{title}</h3>
             <motion.div
