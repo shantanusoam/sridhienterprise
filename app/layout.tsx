@@ -16,12 +16,6 @@ const lato = Lato({
   weight: ['400', '700'], // Adjust weights as needed
   variable: '--font-lato', // CSS variable
 });
-import { Montserrat } from '@next/font/google';
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '700'], // Adjust weights as needed
-  variable: '--font-montserrat', // CSS variable
-});
 
 const inter = Inter({ subsets: ['latin'] });
 

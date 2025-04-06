@@ -323,7 +323,7 @@ export default function ProductsCategriesPage() {
           animate={isVisible ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <motion.div
               key={category.title}
               variants={itemVariants}

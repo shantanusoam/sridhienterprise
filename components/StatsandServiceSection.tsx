@@ -302,7 +302,6 @@ export default function StatsAndServicesSection() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
       const element = document.getElementById('stats-services-section');
       if (!element) return;
 
@@ -324,7 +323,15 @@ export default function StatsAndServicesSection() {
   }, [controls]);
 
   // Number counter animation
-  const AnimatedCounter = ({ value, duration = 2 }) => {
+  interface AnimatedCounterProps {
+    value: string;
+    duration?: number;
+  }
+
+  const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
+    value,
+    duration = 2,
+  }) => {
     const [count, setCount] = useState(0);
     const isPlus = value.includes('+');
     const numericValue = parseInt(value.replace(/\D/g, ''));
@@ -342,7 +349,7 @@ export default function StatsAndServicesSection() {
       }, incrementTime);
 
       return () => clearInterval(timer);
-    }, [numericValue, duration, isVisible]);
+    }, [numericValue, duration]);
 
     return (
       <span>

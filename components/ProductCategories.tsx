@@ -273,7 +273,7 @@ const ProductCategories = () => {
   const changeSlide = (newDirection: number) => {
     setDirection(newDirection);
     setCurrentIndex((prevIndex) => {
-      let newIndex = prevIndex + newDirection;
+      const newIndex = prevIndex + newDirection;
       if (newIndex < 0) {
         return categories.length - 1; // Wrap around to last
       } else if (newIndex >= categories.length) {

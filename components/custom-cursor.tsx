@@ -5,7 +5,8 @@ import {
   useMotionValue,
   useSpring,
   useReducedMotion,
-  animate as fmAnimate,
+  animate, // Use 'animate' directly
+  Transition, // Import Transition type
 } from 'framer-motion';
 import { useEffect, useState, useCallback, useRef } from 'react';
 
@@ -57,16 +58,16 @@ export function CustomCursor() {
 
   // --- Motion Values for Style Properties (Animated based on state) ---
   // 'scale' is GPU-accelerated via `transform: scale()`
-  const coreScale = useMotionValue(1);
-  const haloScale = useMotionValue(1);
+  const coreScale = useMotionValue<number>(1);
+  const haloScale = useMotionValue<number>(1);
   // 'opacity' is GPU-accelerated
-  const coreOpacity = useMotionValue(1);
-  const haloOpacity = useMotionValue(1);
+  const coreOpacity = useMotionValue<number>(1);
+  const haloOpacity = useMotionValue<number>(1);
   // Other properties (less likely to be consistently GPU-accelerated but still animatable)
-  const coreBg = useMotionValue(colors.core);
-  const haloBorder = useMotionValue(colors.haloDefault);
-  const haloBg = useMotionValue('transparent');
-  const haloBorderWidth = useMotionValue(2);
+  const coreBg = useMotionValue<string>(colors.core);
+  const haloBorder = useMotionValue<string>(colors.haloDefault);
+  const haloBg = useMotionValue<string>('transparent');
+  const haloBorderWidth = useMotionValue<number>(2);
 
   // --- Event Handlers ---
   // Updates raw mouse motion values directly
@@ -116,7 +117,12 @@ export function CustomCursor() {
 
   // --- Animate Styles based on cursorVariant State ---
   useEffect(() => {
-    const transition = { type: 'spring', duration: 0.4, bounce: 0.3 };
+    // Explicitly type the transition object
+    const transition: Transition = {
+      type: 'spring',
+      duration: 0.4,
+      bounce: 0.3,
+    };
 
     if (prefersReducedMotion) {
       // Set final states directly for reduced motion
@@ -136,42 +142,53 @@ export function CustomCursor() {
     } else {
       // Use fmAnimate for smooth transitions targeting motion values
       // Prioritize animating transform (scale) and opacity
-      fmAnimate(
-        coreScale,
-        cursorVariant === 'click' ? 0.8 : cursorVariant === 'hover' ? 0.5 : 1,
-        transition
-      );
-      fmAnimate(
-        coreOpacity,
-        cursorVariant === 'click' ? 0.9 : cursorVariant === 'hover' ? 0.7 : 1,
-        transition
-      );
+      let targetCoreScale = 1;
+      if (cursorVariant === 'click') {
+        targetCoreScale = 0.8;
+      } else if (cursorVariant === 'hover') {
+        targetCoreScale = 0.5;
+      }
+      animate(coreScale, targetCoreScale, transition); // Use animate
 
-      fmAnimate(
-        haloScale,
-        cursorVariant === 'click' ? 1.3 : cursorVariant === 'hover' ? 1.5 : 1,
-        transition
-      );
-      // fmAnimate(haloOpacity, 1, transition); // Often halo opacity doesn't change
+      let targetCoreOpacity = 1;
+      if (cursorVariant === 'click') {
+        targetCoreOpacity = 0.9;
+      } else if (cursorVariant === 'hover') {
+        targetCoreOpacity = 0.7;
+      }
+      animate(coreOpacity, targetCoreOpacity, transition); // Use animate
+
+      let targetHaloScale = 1;
+      if (cursorVariant === 'click') {
+        targetHaloScale = 1.3;
+      } else if (cursorVariant === 'hover') {
+        targetHaloScale = 1.5;
+      }
+      animate(haloScale, targetHaloScale, transition); // Use animate
+
+      // let targetHaloOpacity = 1; // Example if uncommented
+      // fmAnimate(haloOpacity, targetHaloOpacity, transition);
 
       // Animate other properties
-      fmAnimate(
-        haloBorder,
-        cursorVariant === 'click' || cursorVariant === 'hover'
-          ? colors.haloInteractBorder
-          : colors.haloDefault,
-        transition
-      );
-      fmAnimate(
-        haloBg,
-        cursorVariant === 'click'
-          ? colors.haloInteract + 'E6'
-          : cursorVariant === 'hover'
-          ? colors.haloInteract + 'B3'
-          : 'transparent',
-        transition
-      );
-      fmAnimate(haloBorderWidth, cursorVariant === 'click' ? 3 : 2, transition);
+      let targetHaloBorder = colors.haloDefault;
+      if (cursorVariant === 'click' || cursorVariant === 'hover') {
+        targetHaloBorder = colors.haloInteractBorder;
+      }
+      animate(haloBorder, targetHaloBorder, transition); // Use animate
+
+      let targetHaloBg = 'transparent';
+      if (cursorVariant === 'click') {
+        targetHaloBg = colors.haloInteract + 'E6';
+      } else if (cursorVariant === 'hover') {
+        targetHaloBg = colors.haloInteract + 'B3';
+      }
+      animate(haloBg, targetHaloBg, transition); // Use animate
+
+      let targetHaloBorderWidth = 2;
+      if (cursorVariant === 'click') {
+        targetHaloBorderWidth = 3;
+      }
+      animate(haloBorderWidth, targetHaloBorderWidth, transition); // Use animate
     }
     // coreBg is static, no need to animate here unless desired
     // coreBg.set(colors.core);

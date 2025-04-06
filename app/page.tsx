@@ -8,97 +8,22 @@ import Hero from '@/components/Hero';
 // import ProductCategories from "@/components/ProductCategories";
 import Testimonials from '@/components/Testimonials';
 // import Footer from "@/components/Footer";
-import { Button } from '@/components/ui/button';
+
 import { motion } from 'framer-motion';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { COLORS } from '@/lib/constants';
+
 import AboutSection from '@/components/about-section';
 import ServicesSection from '@/components/services-section';
 import ProductsCategriesPage from '@/components/categries-section';
-import ProductCategories from '@/components/ProductCategories';
+
 import OurProcess from '@/components/OurProcess';
 import StatsAndServicesSection from '@/components/StatsandServiceSection';
 import { CustomCursor } from '@/components/custom-cursor';
 
-const stats = [
-  { label: 'Years of Excellence', value: '14+' },
-  { label: 'Products Distributed', value: '1,500+' },
-  { label: 'Satisfied Clients', value: '570+' },
-  { label: 'Pan-India Coverage', value: '28 States' },
-];
 // Animation variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
-
-const staggerChildren = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-const processTabs = [
-  {
-    value: 'sourcing',
-    title: 'Strategic Sourcing',
-    description: 'Partnering with premier manufacturers',
-    content:
-      'Our specialized team identifies and partners with manufacturers whose products align perfectly with the unique requirements of government and paramilitary canteens, ensuring both quality and value excellence.',
-  },
-  {
-    value: 'quality',
-    title: 'Quality Verification',
-    description: 'Multi-tier quality assessment',
-    content:
-      'Our comprehensive quality control process includes multiple verification stages, ensuring that every product consistently meets our exacting standards before reaching our distinguished clients.',
-  },
-  {
-    value: 'distribution',
-    title: 'Precision Distribution',
-    description: 'Nationwide logistics excellence',
-    content:
-      'Our sophisticated distribution network combines strategic warehousing and advanced logistics expertise to ensure efficient, timely delivery across India, regardless of geographical challenges.',
-  },
-  {
-    value: 'support',
-    title: 'Dedicated Support',
-    description: 'Responsive customer care',
-    content:
-      'Our specialized support team provides continuous assistance to our clients, promptly addressing concerns and ensuring their ongoing satisfaction with both our products and comprehensive services.',
-  },
-];
-const services = [
-  {
-    title: 'Strategic Distribution Network',
-    description:
-      'Our meticulously planned network ensures timely delivery to even the most remote locations across India.',
-    icon: '🚚',
-  },
-  {
-    title: 'Rigorous Quality Assurance',
-    description:
-      'Every product undergoes comprehensive quality verification to meet the high standards our clients deserve.',
-    icon: '✅',
-  },
-  {
-    title: 'Advanced Inventory Solutions',
-    description:
-      'Our cutting-edge inventory management systems ensure optimal stock levels and minimal fulfillment times.',
-    icon: '📦',
-  },
-];
 
 export default function Home() {
   return (
@@ -190,8 +115,8 @@ export default function Home() {
                 style={{ color: '#5D3A1A', fontFamily: 'Lora, serif' }}
               >
                 Join the hundreds of government and paramilitary canteens that
-                trust Sridhi Enterprises to deliver excellence. Let's build a
-                partnership that serves those who serve our nation.
+                trust Sridhi Enterprises to deliver excellence. Let&apos;s build
+                a partnership that serves those who serve our nation.
               </motion.p>
 
               <motion.div variants={fadeIn}>

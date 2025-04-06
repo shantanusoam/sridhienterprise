@@ -83,9 +83,6 @@ export default function OurProcess() {
   }, []);
 
   const activeTabData = processTabs.find((tab) => tab.value === activeTab);
-  const activeTabIndex = processTabs.findIndex(
-    (tab) => tab.value === activeTab
-  );
 
   // Animation variants
   const containerVariants = {
@@ -172,7 +169,7 @@ export default function OurProcess() {
           className="relative mx-auto max-w-4xl -mb-[110px] "
         >
           <div className="relative h-14 md:h-16 flex rounded-full overflow-hidden">
-            {processTabs.map((tab, index) => (
+            {processTabs.map((tab) => (
               <button
                 key={tab.value}
                 onClick={() => setActiveTab(tab.value)}
