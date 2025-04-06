@@ -1,0 +1,23 @@
+<!-- public/mandala-pattern.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+  <circle cx="50" cy="50" r="45"/>
+  <circle cx="50" cy="50" r="35"/>
+  <circle cx="50" cy="50" r="25"/>
+  <circle cx="50" cy="50" r="15"/>
+  <circle cx="50" cy="50" r="5"/>
+  <g>
+    <path d="M50 5 L50 15" />
+    <path d="M95 50 L85 50" />
+    <path d="M50 95 L50 85" />
+    <path d="M5 50 L15 50" />
+    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="30s" repeatCount="indefinite" />
+  </g>
+  <g transform="rotate(45 50 50)">
+    <path d="M50 5 L50 15" />
+    <path d="M95 50 L85 50" />
+    <path d="M50 95 L50 85" />
+    <path d="M5 50 L15 50" />
+    <animateTransform attributeName="transform" type="rotate" from="45 50 50" to="405 50 50" dur="30s" repeatCount="indefinite" />
+  </g>
+    <!-- Add more intricate details if desired -->
+</svg>

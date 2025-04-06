@@ -40,7 +40,7 @@ const Header = () => {
           {[
             { name: 'Home', href: '/' },
             { name: 'About', href: '/about' },
-            { name: 'Products', href: '/products' },
+
             { name: 'Services', href: '/services' },
             { name: 'Contact', href: '/contact' },
           ].map((item) => (

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 // import { Metadata } from "next";
-import Link from "next/link";
+import Link from 'next/link';
 // import Image from "next/image";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
 // import { useInView } from "react-intersection-observer";
 // import ProductCategories from "@/components/ProductCategories";
-import Testimonials from "@/components/Testimonials";
+import Testimonials from '@/components/Testimonials';
 // import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import {
   Card,
   CardContent,
@@ -17,24 +17,22 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { COLORS } from "@/lib/constants";
-import AboutSection from "@/components/about-section";
-import ServicesSection from "@/components/services-section";
-import ProductsCategriesPage from "@/components/categries-section";
-
-// export const metadata: Metadata = {
-//   title: "Sridhi Enterprises - Quality Distribution for Government Services",
-//   description:
-//     "Sridhi Enterprises is a leading distributor connecting quality manufacturers to government and paramilitary canteens across India.",
-// };
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { COLORS } from '@/lib/constants';
+import AboutSection from '@/components/about-section';
+import ServicesSection from '@/components/services-section';
+import ProductsCategriesPage from '@/components/categries-section';
+import ProductCategories from '@/components/ProductCategories';
+import OurProcess from '@/components/OurProcess';
+import StatsAndServicesSection from '@/components/StatsandServiceSection';
+import { CustomCursor } from '@/components/custom-cursor';
 
 const stats = [
-  { label: "Years of Experience", value: "20+" },
-  { label: "Products Distributed", value: "1000+" },
-  { label: "Satisfied Clients", value: "500+" },
-  { label: "Pan-India Presence", value: "28 States" },
+  { label: 'Years of Excellence', value: '14+' },
+  { label: 'Products Distributed', value: '1,500+' },
+  { label: 'Satisfied Clients', value: '570+' },
+  { label: 'Pan-India Coverage', value: '28 States' },
 ];
 // Animation variants
 const fadeIn = {
@@ -53,49 +51,52 @@ const staggerChildren = {
 };
 const processTabs = [
   {
-    value: "sourcing",
-    title: "Sourcing",
-    description: "We partner with top manufacturers",
+    value: 'sourcing',
+    title: 'Strategic Sourcing',
+    description: 'Partnering with premier manufacturers',
     content:
-      "Our team carefully selects products that meet the specific needs of government and paramilitary canteens, ensuring quality and value for money.",
+      'Our specialized team identifies and partners with manufacturers whose products align perfectly with the unique requirements of government and paramilitary canteens, ensuring both quality and value excellence.',
   },
   {
-    value: "quality",
-    title: "Quality Check",
-    description: "Rigorous quality checks",
+    value: 'quality',
+    title: 'Quality Verification',
+    description: 'Multi-tier quality assessment',
     content:
-      "Every product undergoes thorough quality control processes to ensure it meets our strict standards before being distributed to our clients.",
+      'Our comprehensive quality control process includes multiple verification stages, ensuring that every product consistently meets our exacting standards before reaching our distinguished clients.',
   },
   {
-    value: "distribution",
-    title: "Distribution",
-    description: "Nationwide network",
+    value: 'distribution',
+    title: 'Precision Distribution',
+    description: 'Nationwide logistics excellence',
     content:
-      "Our extensive distribution network and logistics expertise ensure that products reach our clients efficiently, even in remote locations.",
+      'Our sophisticated distribution network combines strategic warehousing and advanced logistics expertise to ensure efficient, timely delivery across India, regardless of geographical challenges.',
   },
   {
-    value: "support",
-    title: "After-Sales Support",
-    description: "Dedicated customer support",
+    value: 'support',
+    title: 'Dedicated Support',
+    description: 'Responsive customer care',
     content:
-      "We provide ongoing support to our clients, addressing any concerns and ensuring their continued satisfaction with our products and services.",
+      'Our specialized support team provides continuous assistance to our clients, promptly addressing concerns and ensuring their ongoing satisfaction with both our products and comprehensive services.',
   },
 ];
 const services = [
   {
-    title: "Distribution Network",
-    description: "Our extensive network ensures timely delivery across India.",
-    icon: "🚚",
+    title: 'Strategic Distribution Network',
+    description:
+      'Our meticulously planned network ensures timely delivery to even the most remote locations across India.',
+    icon: '🚚',
   },
   {
-    title: "Quality Assurance",
-    description: "Rigorous quality control for all our products.",
-    icon: "✅",
+    title: 'Rigorous Quality Assurance',
+    description:
+      'Every product undergoes comprehensive quality verification to meet the high standards our clients deserve.',
+    icon: '✅',
   },
   {
-    title: "Inventory Management",
-    description: "Advanced systems to maintain optimal stock levels.",
-    icon: "📦",
+    title: 'Advanced Inventory Solutions',
+    description:
+      'Our cutting-edge inventory management systems ensure optimal stock levels and minimal fulfillment times.',
+    icon: '📦',
   },
 ];
 
@@ -104,257 +105,117 @@ export default function Home() {
     <>
       <Header />
       <main>
+        <CustomCursor />
         <Hero />
         <ServicesSection />
         <AboutSection />
         <div className="relative ">
           <ProductsCategriesPage />
         </div>
-        <div className="bg-white">
-          <motion.section
-            initial="hidden"
-            animate="visible"
-            variants={staggerChildren}
-            className="py-24 bg-white relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-50" />
-            <div className="container mx-auto px-4 relative z-10">
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-              >
-                Why Choose Sridhi Enterprises?
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeIn}
-                    whileHover={{ scale: 1.05 }}
-                    className="group"
-                  >
-                    <Card className="border-none shadow-lg hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-lg">
-                      <CardHeader>
-                        <CardTitle className="text-5xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                          {stat.value}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600 font-medium">
-                          {stat.label}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
-          {/* <section className={`py-16 bg-${COLORS.background}`}>
-            <div className="container mx-auto px-4">
-              <h2
-                className={`text-3xl font-bold mb-12 text-center text-${COLORS.primary}`}
-              >
-                Why Choose Sridhi Enterprises?
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {stats.map((stat, index) => (
-                  <Card key={index} className="text-center">
-                    <CardHeader>
-                      <CardTitle
-                        className={`text-4xl font-bold text-${COLORS.secondary}`}
-                      >
-                        {stat.value}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className={`text-${COLORS.text}`}>{stat.label}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </section> */}
-          {/* <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerChildren}
-            className="py-24 bg-gray-900"
-          >
-            <div className="container mx-auto px-4">
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl font-bold text-center mb-16 bg-gradient-to-tr from-rose-600 to-orange-600 bg-clip-text text-transparent"
-              >
-                Our Services
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {services.map((service, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeIn}
-                    whileHover={{ y: -10 }}
-                    className="group"
-                  >
-                    <Card className="h-full border-none shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <CardHeader>
-                        <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                          {service.icon}
-                        </div>
-                        <CardTitle className="text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                          {service.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-600">{service.description}</p>
-                      </CardContent>
-                      <CardFooter className="justify-center">
-                        <Link href="/services">
-                          <Button
-                            variant="outline"
-                            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-none"
-                          >
-                            Learn More
-                          </Button>
-                        </Link>
-                      </CardFooter>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section> */}
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <h2
-                className={`text-3xl font-bold mb-12 text-center text-${COLORS.primary}`}
-              >
-                Our Services
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {services.map((service, index) => (
-                  <Card key={index} className="text-center">
-                    <CardHeader>
-                      <CardTitle className="text-4xl mb-4">
-                        {service.icon}
-                      </CardTitle>
-                      <CardTitle>{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className={`text-${COLORS.text}`}>
-                        {service.description}
-                      </p>
-                    </CardContent>
-                    <CardFooter className="justify-center">
-                      <Link href="/services">
-                        <Button variant="outline">Learn More</Button>
-                      </Link>
-                    </CardFooter>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </section>
+        <div className="bg-[#FDF3E3]">
+          <StatsAndServicesSection />
+
           {/* <ProductCategories /> */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerChildren}
-            className="py-12 bg-gray-50"
-          >
-            <div className="container mx-auto ">
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl font-bold text-center mx-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-              >
-                Our Process
-              </motion.h2>
-              <Tabs defaultValue="sourcing" className="w-full p-4">
-                <TabsList className="grid w-full h-16 p-4 grid-cols-1 md:grid-cols-4 bg-gray-100 rounded-lg mb-8">
-                  {processTabs.map((tab) => (
-                    <TabsTrigger
-                      key={tab.value}
-                      value={tab.value}
-                      className="data-[state=active]:bg-white p-3 data-[state=active]:shadow-lg transition-all duration-300"
-                    >
-                      {tab.title}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-                {processTabs.map((tab) => (
-                  <TabsContent key={tab.value} value={tab.value}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Card className="border-none shadow-lg">
-                        <CardHeader>
-                          <CardTitle className="text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                            {tab.title}
-                          </CardTitle>
-                          <CardDescription>{tab.description}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-gray-600">{tab.content}</p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </TabsContent>
-                ))}
-              </Tabs>
-            </div>
-          </motion.section>
+          <OurProcess />
           <Testimonials />
-          <section className="py-16">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className={`text-3xl font-bold mb-8 text-${COLORS.primary}`}>
-                Ready to Get Started?
-              </h2>
-              {/* <div className={`mb-8 text-${COLORS.text}`}>
-                Contact us today to learn more about how Sridhi Enterprises can
-                serve your canteen's needs
-              </div> */}
-              <Link href="/contact">
-                <Button size="lg">Contact Us</Button>
-              </Link>
-            </div>
-          </section>
-        </div>
-        <main className="relative">
-          {/* Stats Section */}
-
-          {/* Services Section */}
-
-          {/* Process Section */}
-
-          {/* Call to Action */}
-          {/* <motion.section
+          <motion.section
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="py-24 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+            className="py-16 md:py-20 font-serif relative overflow-hidden"
+            style={{
+              backgroundColor: '#F5E6C8',
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23b88c46' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              backgroundSize: '80px',
+            }}
           >
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-4xl font-bold mb-8">Ready to Get Started?</h2>
-              <p className="mb-12 text-lg opacity-90 max-w-2xl mx-auto">
-                Contact us today to learn more about how Sridhi Enterprises can
-                serve your canteen's needs.
-              </p>
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="bg-white text-blue-600 hover:bg-gray-100 transition-all duration-300 text-lg px-8 py-6"
+            {/* Decorative elements that match the other components */}
+            <div className="absolute inset-0 pointer-events-none opacity-10">
+              <div className="absolute left-0 top-0 w-full h-full">
+                <svg
+                  width="100%"
+                  height="100%"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  Contact Us
-                </Button>
-              </Link>
+                  <defs>
+                    <pattern
+                      id="ctaPattern"
+                      x="0"
+                      y="0"
+                      width="400"
+                      height="400"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <g fill="none" stroke="#8B4513" strokeWidth="0.5">
+                        <circle cx="200" cy="200" r="150" />
+                        <circle cx="200" cy="200" r="140" />
+                        <circle cx="200" cy="200" r="130" />
+                        <circle cx="200" cy="200" r="120" />
+                        <circle cx="200" cy="200" r="110" />
+                        <circle cx="200" cy="200" r="100" />
+                        <circle cx="200" cy="200" r="90" />
+                        <circle cx="200" cy="200" r="80" />
+                        <circle cx="200" cy="200" r="70" />
+                        <circle cx="200" cy="200" r="60" />
+                        <circle cx="200" cy="200" r="50" />
+                        <circle cx="200" cy="200" r="40" />
+
+                        {/* Decorative lines */}
+                        <path d="M 200,50 L 200,350" />
+                        <path d="M 50,200 L 350,200" />
+                        <path d="M 90,90 L 310,310" />
+                        <path d="M 90,310 L 310,90" />
+                      </g>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#ctaPattern)" />
+                </svg>
+              </div>
             </div>
-          </motion.section> */}
-        </main>
+
+            <div className="container mx-auto px-4 text-center relative z-10">
+              <motion.h2
+                variants={fadeIn}
+                className="text-4xl md:text-5xl font-bold mb-8"
+                style={{ color: '#A93118', fontFamily: 'Lora, serif' }}
+              >
+                Elevate Your Service Standards
+              </motion.h2>
+
+              <motion.p
+                variants={fadeIn}
+                className="mb-12 text-lg opacity-90 max-w-2xl mx-auto"
+                style={{ color: '#5D3A1A', fontFamily: 'Lora, serif' }}
+              >
+                Join the hundreds of government and paramilitary canteens that
+                trust Sridhi Enterprises to deliver excellence. Let's build a
+                partnership that serves those who serve our nation.
+              </motion.p>
+
+              <motion.div variants={fadeIn}>
+                <Link href="/contact">
+                  <div
+                    className="inline-block rounded-lg text-white text-lg px-8 py-4 font-medium transition-all duration-300 hover:shadow-lg"
+                    style={{
+                      background:
+                        'linear-gradient(90deg, #973116 0%, #B8520F 50%, #E18931 100%)',
+                      fontFamily: 'Lora, serif',
+                    }}
+                  >
+                    Begin Your Journey With Us
+                  </div>
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Import serif font - this would be included once in a layout component */}
+            <style jsx global>{`
+              @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+            `}</style>
+          </motion.section>
+        </div>
       </main>
     </>
   );
