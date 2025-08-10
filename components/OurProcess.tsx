@@ -130,7 +130,7 @@ export default function OurProcess() {
     <motion.section
       ref={sectionRef}
       id="our-process-section"
-      className="relative overflow-hidden font-serif pt-16 pb-0"
+      className="relative overflow-hidden font-serif pt-12 md:pt-16 pb-0"
       style={{ backgroundColor: colors.background }}
       variants={containerVariants}
       initial="hidden"
@@ -157,7 +157,7 @@ export default function OurProcess() {
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           variants={itemVariants}
-          className="text-4xl md:text-5xl  font-bold mb-10 md:mb-16 text-center"
+          className="text-3xl md:text-5xl  font-bold mb-8 md:mb-16 text-center"
           style={{ color: colors.headingText }}
         >
           Our Process
@@ -166,14 +166,14 @@ export default function OurProcess() {
         {/* Tabs Navigation - Styled like the image */}
         <motion.div
           variants={itemVariants}
-          className="relative mx-auto max-w-4xl -mb-[110px] "
+          className="relative mx-auto max-w-[95vw] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mb-4 md:-mb-[110px] px-2"
         >
-          <div className="relative h-14 md:h-16 flex rounded-full overflow-hidden">
+          <div className="relative flex items-center gap-2 md:gap-0 overflow-x-auto md:overflow-hidden no-scrollbar h-auto md:h-16 md:rounded-full">
             {processTabs.map((tab) => (
               <button
                 key={tab.value}
                 onClick={() => setActiveTab(tab.value)}
-                className={`relative flex-1 flex items-center justify-center text-base md:text-lg font-medium transition-colors duration-300 ease-in-out focus:outline-none ${
+                className={`relative flex-none md:flex-1 px-4 py-2 md:px-0 md:py-0 flex items-center justify-center text-sm md:text-lg font-medium rounded-full md:rounded-none whitespace-nowrap transition-colors duration-300 ease-in-out focus:outline-none ${
                   activeTab === tab.value
                     ? 'text-white'
                     : 'text-white/80 hover:text-white'
@@ -191,7 +191,7 @@ export default function OurProcess() {
                 {/* Highlight indicator for active tab */}
                 {activeTab === tab.value && (
                   <motion.div
-                    className="absolute bottom-0 left-0 w-full h-1 bg-white/30"
+                    className="hidden md:block absolute bottom-0 left-0 w-full h-1 bg-white/30"
                     layoutId="activeTabIndicator"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
@@ -209,7 +209,7 @@ export default function OurProcess() {
               variants={imageVariants}
               className="w-full lg:w-[35%] flex justify-center lg:justify-end"
             >
-              <div className="relative lg:w-[350px] lg:h-[525px] pointer-events-none">
+              <div className="relative h-56 sm:h-64 w-full max-w-[350px] lg:w-[350px] lg:h-[525px] pointer-events-none">
                 <Image
                   src="/CulturalWomen.png"
                   className=""
@@ -235,19 +235,19 @@ export default function OurProcess() {
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
                 >
                   <h3
-                    className="text-4xl md:text-5xl font-bold mb-3"
+                    className="text-3xl md:text-5xl font-bold mb-2 md:mb-3"
                     style={{ color: activeTabData?.color || colors.sourcing }}
                   >
                     {activeTabData?.title}
                   </h3>
                   <h4
-                    className="text-xl md:text-2xl font-medium mb-5"
+                    className="text-lg md:text-2xl font-medium mb-4 md:mb-5"
                     style={{ color: activeTabData?.color || colors.sourcing }}
                   >
                     {activeTabData?.description}
                   </h4>
                   <p
-                    className="text-base md:text-lg leading-relaxed md:leading-loose"
+                    className="text-sm md:text-lg leading-relaxed md:leading-loose"
                     style={{ color: colors.bodyText }}
                   >
                     {activeTabData?.content}
@@ -266,6 +266,10 @@ export default function OurProcess() {
         .font-serif {
           font-family: 'Lora', serif;
         }
+
+        /* hide horizontal scrollbar for tab row on mobile */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </motion.section>
   );

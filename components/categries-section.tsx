@@ -12,7 +12,7 @@ const categories = [
     description:
       'High-quality kitchenware designed to make cooking efficient and enjoyable.',
     image:
-      'https://cdn.shopify.com/s/files/1/0268/9577/7903/files/3_480x480.jpg?v=1586949302',
+      'https://www.pnbkitchenmate.com/cdn/shop/files/SmartIdlyCooker.jpg?v=1754656638&width=1946',
     link: 'https://www.pnbkitchenmate.com/',
     iconSvg: (
       <svg
@@ -254,7 +254,7 @@ export default function ProductsCategriesPage() {
   return (
     <section
       id="products-categories-section"
-      className="py-16 md:py-24 relative font-serif overflow-hidden"
+      className="py-12 md:py-24 relative font-serif overflow-hidden"
       style={{
         backgroundColor: '#FDF3E3',
         backgroundImage:
@@ -301,7 +301,7 @@ export default function ProductsCategriesPage() {
           initial={{ opacity: 0, y: -20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.7 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-8"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 md:mb-8 px-2"
           style={{ color: '#A93118', fontFamily: 'Lora, serif' }}
         >
           Our Product Categories
@@ -311,7 +311,7 @@ export default function ProductsCategriesPage() {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-lg text-amber-900/80 max-w-2xl mx-auto text-center mb-12"
+          className="text-base sm:text-lg text-amber-900/80 max-w-2xl mx-auto text-center mb-8 md:mb-12 px-4"
         >
           Explore our diverse range of high-quality products designed to enhance
           your daily life
@@ -321,7 +321,7 @@ export default function ProductsCategriesPage() {
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {categories.map((category) => (
             <motion.div
@@ -334,13 +334,13 @@ export default function ProductsCategriesPage() {
               className="h-full"
             >
               <div className="bg-[#FEF6E6] rounded-xl overflow-hidden border border-amber-200 h-full shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="relative aspect-video overflow-hidden">
+                <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden">
                   <Image
                     src={category.image}
                     alt={category.title}
                     width={600}
                     height={400}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 md:hover:scale-110"
                   />
 
                   {/* Decorative overlay */}
@@ -354,12 +354,12 @@ export default function ProductsCategriesPage() {
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <div className="flex items-start mb-4">
-                    <div className="flex-shrink-0 p-2 bg-amber-100 rounded-lg border border-amber-200 mr-4">
+                    <div className="flex-shrink-0 p-2 bg-amber-100 rounded-lg border border-amber-200 mr-3 md:mr-4">
                       {category.iconSvg}
                     </div>
-                    <p className="text-amber-900/80 flex-grow">
+                    <p className="text-amber-900/80 flex-grow text-sm sm:text-base">
                       {category.description}
                     </p>
                   </div>
@@ -370,13 +370,13 @@ export default function ProductsCategriesPage() {
                     rel="noopener noreferrer"
                   >
                     <motion.div
-                      className="w-full flex items-center justify-center px-6 py-3 rounded-lg text-white transition-all duration-300"
+                      className="w-full flex items-center justify-center px-5 py-3 rounded-lg text-white transition-all duration-300 text-sm md:text-base"
                       style={{
                         background:
                           'linear-gradient(90deg, #973116 0%, #B8520F 50%, #E18931 100%)',
                       }}
                       whileHover={{
-                        scale: 1.03,
+                        scale: 1.02,
                         boxShadow: '0px 4px 15px rgba(183, 85, 39, 0.25)',
                       }}
                       whileTap={{ scale: 0.98 }}

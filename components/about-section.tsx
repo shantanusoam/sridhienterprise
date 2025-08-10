@@ -135,7 +135,7 @@ export default function AboutSection() {
       </div>
 
       {/* Experience Counter Shield */}
-      <div className="absolute right-8 bottom-8 lg:right-16 lg:bottom-10">
+      <div className="absolute right-8 bottom-8 lg:right-16 lg:bottom-10 hidden lg:block">
         <ExperienceShield
           years={14} // Or calculate dynamically: new Date().getFullYear() - 2012
           // textLine1="Custom Text" // Optional: Override defaults

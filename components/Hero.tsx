@@ -24,9 +24,11 @@ import heroPro2 from '/public/Hero2.png';
 
 // Assuming other images might be external URLs or imported similarly
 const externalImage1 =
-  'https://bhikharamchandmal.in/pub/media/wysiwyg/slider/finni-banner.png';
-// const externalImage2 = 'https://bhikharamchandmal.in/pub/media/wysiwyg/slider/banner-1.jpg';
-// const externalImage1 = '/images/hero-placeholder-1.jpg'; // Using placeholders
+  'https://www.sarlamills.in/cdn/shop/files/Group-2.webp?v=1672291195';
+const externalImage2 = 'https://cdn.shopify.com/s/files/1/0268/9577/7903/files/1_6.jpg?v=1743142253';
+const externalImage3 = 'https://bhikharamchandmal.in/pub/media/catalog/1270x185px-Product-Page-Banner_01.jpg'; // Using placeholders
+const externalImage4 = 'https://cdn.shopify.com/s/files/1/2402/9599/files/oil-Banner.png?v=1748498078';
+const externalImage5 = 'https://www.7softindia.com/wp/wp-content/uploads/2023/01/website-3.jpg';
 // const externalImage2 = '/images/hero-placeholder-2.jpg'; // Using placeholders
 
 interface Slide {
@@ -44,17 +46,30 @@ const slides: Slide[] = [
     alt: 'Wide range of distributed products',
   },
   {
-    image: heroPro2,
+    image: externalImage2,
     titleLines: ['Quality Without', 'Compromise'],
     subtitle: 'Serving Those Who Serve Our Nation',
     alt: 'Close-up of quality food products',
   },
   {
-    image: heroPro1, // Use imported image
+    image: externalImage3, // Use imported image
     titleLines: ['Pan-India Logistics', 'Excellence'],
     subtitle: 'Reaching Every Corner with Precision and Care',
     alt: 'Sridhi Enterprises product variety',
   },
+  {
+    image: externalImage4,
+    titleLines: ['Quality Without', 'Compromise'],
+    subtitle: 'Serving Those Who Serve Our Nation',
+    alt: 'Close-up of quality food products',
+  },
+  {
+    image: externalImage5,
+    titleLines: ['Quality Without', 'Compromise'],
+    subtitle: 'Serving Those Who Serve Our Nation',
+    alt: 'Close-up of quality food products',
+  },
+
 ];
 
 // Animation Variants
@@ -80,6 +95,37 @@ const textLineVariants = {
     opacity: 0,
     transition: { duration: 0.4, ease: 'easeIn' },
   },
+};
+
+// Animated background bands for text readability on bright images
+const bandVariantsLeft = {
+  initial: { x: '-100%', opacity: 0.9 },
+  animate: {
+    x: '0%',
+    opacity: 0.9,
+    transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] },
+  },
+  exit: { x: '100%', opacity: 0.9, transition: { duration: 0.4, ease: 'easeIn' } },
+};
+
+const bandVariantsRight = {
+  initial: { x: '100%', opacity: 0.9 },
+  animate: {
+    x: '0%',
+    opacity: 0.9,
+    transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] },
+  },
+  exit: { x: '-100%', opacity: 0.9, transition: { duration: 0.4, ease: 'easeIn' } },
+};
+
+const bandVariantsTop = {
+  initial: { y: '-100%', opacity: 0.9 },
+  animate: {
+    y: '0%',
+    opacity: 0.9,
+    transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] },
+  },
+  exit: { y: '100%', opacity: 0.9, transition: { duration: 0.4, ease: 'easeIn' } },
 };
 
 const buttonVariants = {
@@ -113,7 +159,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-gray-900" // Ensure background for image load
+      className="relative h-[55vh] md:h-[65vh] w-full overflow-hidden bg-gray-900" // Ensure background for image load
       onMouseEnter={() => setIsInteracting(true)}
       onMouseLeave={() => setIsInteracting(false)}
       onTouchStart={() => setIsInteracting(true)} // Handle touch interaction
@@ -193,26 +239,42 @@ const Hero = () => {
             exit="exit" // Although exit might not be visible with fade, good practice
             className="max-w-xl md:max-w-2xl lg:max-w-3xl pointer-events-auto" // Allow interaction with button etc.
           >
-            {/* Title Lines - Animated with Masking */}
+            {/* Title Lines - Animated with Masking and Color Bands */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg leading-tight">
               {currentSlideData.titleLines.map((line, lineIndex) => (
-                // Overflow hidden creates the mask
                 <span key={lineIndex} className="block overflow-hidden py-1">
-                  <motion.span className="block" variants={textLineVariants}>
-                    {line}
+                  <motion.span variants={textLineVariants} className="relative block">
+                    <motion.span
+                      className="absolute inset-0 rounded-sm md:rounded md:skew-x-[-6deg]"
+                      variants={lineIndex % 2 === 0 ? bandVariantsLeft : bandVariantsRight}
+                      style={{
+                        background:
+                          'linear-gradient(135deg, rgba(234,205,163,0.95) 0%, rgba(214,174,123,0.95) 100%)',
+                        filter: 'drop-shadow(0 6px 18px rgba(214,174,123,0.25))',
+                      }}
+                    />
+                    <span className="relative z-10 px-2 text-gray-900">{line}</span>
                   </motion.span>
                 </span>
               ))}
             </h1>
 
-            {/* Subtitle - Animated */}
-            {/* Overflow hidden creates the mask */}
+            {/* Subtitle - Animated with a subtle band */}
             <div className="overflow-hidden">
               <motion.p
-                variants={textLineVariants} // Use same variant, stagger takes care of delay
-                className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-gray-200 drop-shadow-md font-light" // Lighter font weight
+                variants={textLineVariants}
+                className="relative text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-gray-100 drop-shadow-md font-light"
               >
-                {currentSlideData.subtitle}
+                <motion.span
+                  className="absolute inset-0 rounded-sm md:rounded opacity-90"
+                  variants={bandVariantsTop}
+                  style={{
+                    background:
+                      'linear-gradient(135deg, rgba(234,205,163,0.85) 0%, rgba(214,174,123,0.85) 100%)',
+                    filter: 'drop-shadow(0 6px 18px rgba(214,174,123,0.25))',
+                  }}
+                />
+                <span className="relative z-10 px-2 text-gray-900">{currentSlideData.subtitle}</span>
               </motion.p>
             </div>
 
