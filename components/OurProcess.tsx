@@ -168,7 +168,7 @@ export default function OurProcess() {
           variants={itemVariants}
           className="relative mx-auto max-w-[95vw] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mb-4 md:-mb-[110px] px-2"
         >
-          <div className="relative flex items-center gap-2 md:gap-0 overflow-x-auto md:overflow-hidden no-scrollbar h-auto md:h-16 md:rounded-full">
+          <div className="relative flex items-center gap-2 md:gap-0 overflow-x-auto md:overflow-hidden no-scrollbar h-14 md:h-16 md:rounded-full">
             {processTabs.map((tab) => (
               <button
                 key={tab.value}
