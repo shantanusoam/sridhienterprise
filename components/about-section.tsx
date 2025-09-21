@@ -3,32 +3,34 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Info } from 'lucide-react';
 
 // Import available images
 import AboutUS from './../public/AboutUS.png';
-import HeroProducts from './../public/HeroProducts.webp';
+import HeroProducts from './../public/images/kitchenware-category.jpg';
 import CulturalWomen from './../public/CulturalWomen.png';
 import Hero2 from './../public/Hero2.png';
 import ExperienceShield from './ExperienceShield';
 
 // Images for slideshow
 const slideImages = [
-  {
-    src: AboutUS,
-    alt: 'Product showcase 1',
-  },
-  {
-    src: HeroProducts,
-    alt: 'Product showcase 2',
-  },
+  // {
+  //   src: AboutUS,
+  //   alt: 'Product showcase 1',
+  // },
+  // {
+  //   src: HeroProducts,
+  //   alt: 'Product showcase 2',
+  // },
   {
     src: CulturalWomen,
     alt: 'Cultural display',
   },
-  {
-    src: Hero2,
-    alt: 'Product display',
-  },
+  // {
+  //   src: Hero2,
+  //   alt: 'Product display',
+  // },
 ];
 
 export default function AboutSection() {
@@ -100,11 +102,28 @@ export default function AboutSection() {
                   Our History
                 </h2>
                 <p className="text-lg">
-                  Established in 2012, Sridhi Enterprises has been a trusted
+                
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div>
+                      Established in 2024, Sridhi Enterprises has been a trusted
                   distributor dedicated to serving the needs of serving and
                   retired personnel of Central Armed Police Forces (CAPEs),
                   Central Police Organizations (CPOs), State Forces, and their
                   families across India.
+                  <span className="ml-2 inline-block cursor-pointer align-middle">
+                        <Info 
+                          className="h-4 w-4 text-[#D2722F]" 
+                          aria-label="Proprietorship running since 2019"
+                        />
+                      </span>
+                      </div>
+                
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Our proprietorship has been operating since 2019, with the company officially registered in 2024.</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </p>
               </div>
 

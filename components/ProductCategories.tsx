@@ -12,7 +12,7 @@ const categories = [
     title: 'Kitchenware',
     description: 'High-quality kitchenware from PNB Kitchenmate',
     // --- Replace with your actual image path ---
-    image: '/images/kitchenware-category.jpg', // Example path
+    image: '/images/ ', // Example path
     iconSvg: (
       <svg
         width="24"

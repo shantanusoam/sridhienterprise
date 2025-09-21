@@ -39,8 +39,9 @@ const Header = () => {
         <nav className="hidden md:flex bg-white space-x-6">
           {[
             { name: 'Home', href: '/' },
+            { name: 'Companies', href: '/companies' },
+            { name: 'Products', href: '/products' },
             { name: 'About', href: '/about' },
-
             { name: 'Services', href: '/services' },
             { name: 'Contact', href: '/contact' },
           ].map((item) => (
@@ -106,8 +107,9 @@ const Header = () => {
           <nav className="flex flex-col items-center py-4">
             {[
               { name: 'Home', href: '/' },
-              { name: 'About', href: '/about' },
+              { name: 'Companies', href: '/companies' },
               { name: 'Products', href: '/products' },
+              { name: 'About', href: '/about' },
               { name: 'Services', href: '/services' },
               { name: 'Contact', href: '/contact' },
             ].map((item) => (

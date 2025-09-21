@@ -12,7 +12,7 @@ body {
 a,
 button,
 [data-cursor-interactable] {
-  cursor: none; /* Hide default system cursor */
+
 }
 
 [data-cursor-interactable] {

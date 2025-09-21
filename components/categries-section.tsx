@@ -3,212 +3,63 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
+import { companies } from '@/lib/companies';
+import PlaceholderImage from '@/components/ui/placeholder-image';
 
-const categories = [
-  {
-    title: 'Kitchenware',
-    description:
-      'High-quality kitchenware designed to make cooking efficient and enjoyable.',
-    image:
-      'https://www.pnbkitchenmate.com/cdn/shop/files/SmartIdlyCooker.jpg?v=1754656638&width=1946',
-    link: 'https://www.pnbkitchenmate.com/',
-    iconSvg: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M8 5H16M8 9H16M7 13H12M20 7L18 12H6L4 7"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M6 12V20C6 20.5523 6.44772 21 7 21H17C17.5523 21 18 20.5523 18 20V12"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+// Use company data from the new structure
+const categories = companies.map(company => ({
+  title: company.name,
+  description: company.description,
+  image: company.coverImage || '/images/placeholder-company.jpg',
+  link: `/companies/${company.slug}`,
+  companyLink: company.website,
+  category: company.category,
+  brandColor: company.brandColors.primary,
+  iconSvg: getCompanyIcon(company.id),
+}));
+
+// Icon mapping function for companies
+function getCompanyIcon(companyId: string) {
+  const iconMap: Record<string, JSX.Element> = {
+    'pnb-kitchenmate': (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5H16M8 9H16M7 13H12M20 7L18 12H6L4 7" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6 12V20C6 20.5523 6.44772 21 7 21H17C17.5523 21 18 20.5523 18 20V12" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
-  },
-  {
-    title: 'Snacks & Sweets',
-    description:
-      'Authentic Indian sweets and snacks that bring traditional flavors to your table.',
-    image: 'https://bhikharamchandmal.in/pub/media/wysiwyg/slider/banner-2.jpg',
-    link: 'https://bhikharamchandmal.in/',
-    iconSvg: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 3V4M12 20V21M4 12H3M5.5 5.5L6.5 6.5M18.5 5.5L17.5 6.5M21 12H20M17.5 16C17.5 17.3807 16.8807 18 15.5 18H8.5C7.11929 18 6.5 17.3807 6.5 16C6.5 14.6193 7.11929 14 8.5 14H15.5C16.8807 14 17.5 14.6193 17.5 16Z"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15.5 14C15.5 11.7909 13.7091 10 11.5 10C9.29086 10 7.5 11.7909 7.5 14"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+    'bhikharam-chandmal': (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3V4M12 20V21M4 12H3M5.5 5.5L6.5 6.5M18.5 5.5L17.5 6.5M21 12H20M17.5 16C17.5 17.3807 16.8807 18 15.5 18H8.5C7.11929 18 6.5 17.3807 6.5 16C6.5 14.6193 7.11929 14 8.5 14H15.5C16.8807 14 17.5 14.6193 17.5 16Z" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M15.5 14C15.5 11.7909 13.7091 10 11.5 10C9.29086 10 7.5 11.7909 7.5 14" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
-  },
-  {
-    title: 'Textiles',
-    description:
-      'Premium textile products known for their durability and comfort.',
-    image:
-      'https://cdn.shopify.com/s/files/1/0683/0712/4528/files/Product-1.webp?v=1672294968',
-    link: 'https://www.sarlamills.in/',
-    iconSvg: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M20 10.5V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12"
-          stroke="#B8520F"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9 2V22"
-          stroke="#B8520F"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15 2V10"
-          stroke="#B8520F"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M22 16C22 16.7956 21.6839 17.5587 21.1213 18.1213C20.5587 18.6839 19.7956 19 19 19C18.2044 19 17.4413 18.6839 16.8787 18.1213C16.3161 17.5587 16 16.7956 16 16C16 15.2044 16.3161 14.4413 16.8787 13.8787C17.4413 13.3161 18.2044 13 19 13C19.7956 13 20.5587 13.3161 21.1213 13.8787C21.6839 14.4413 22 15.2044 22 16Z"
-          stroke="#8B4513"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+    'sarla-mills': (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 10.5V6.8C20 5.11984 20 4.27976 19.673 3.63803C19.3854 3.07354 18.9265 2.6146 18.362 2.32698C17.7202 2 16.8802 2 15.2 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H12" stroke="#B8520F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M9 2V22" stroke="#B8520F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M15 2V10" stroke="#B8520F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
-  },
-  {
-    title: 'Herbal Care',
-    description:
-      'Natural herbal skincare and haircare products that promote wellness.',
-    image:
-      'https://cdn.shopify.com/s/files/1/0086/9036/8627/files/sa_my_SPF_Banner.jpg?v=1685358980',
-    link: 'https://vaadiherbals.in/',
-    iconSvg: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M8 15C8 15 9 14 12 14C15 14 16 15 16 15"
-          stroke="#4B6145"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M8.5 9C8.22386 9 8 8.77614 8 8.5C8 8.22386 8.22386 8 8.5 8C8.77614 8 9 8.22386 9 8.5C9 8.77614 8.77614 9 8.5 9Z"
-          stroke="#4B6145"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15.5 9C15.2239 9 15 8.77614 15 8.5C15 8.22386 15.2239 8 15.5 8C15.7761 8 16 8.22386 16 8.5C16 8.77614 15.7761 9 15.5 9Z"
-          stroke="#4B6145"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-          stroke="#4B6145"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+    'vaadi-herbals': (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 15C8 15 9 14 12 14C15 14 16 15 16 15" stroke="#4B6145" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="8.5" cy="8.5" r="0.5" fill="#4B6145"/>
+        <circle cx="15.5" cy="8.5" r="0.5" fill="#4B6145"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4B6145" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
-  },
-  {
-    title: 'Hygiene Products',
-    description:
-      "Hygienic and comfortable sanitary napkins ensuring women's health and comfort.",
-    image:
-      'https://www.7softindia.com/wp/wp-content/uploads/2023/01/website-1.jpg',
-    link: 'https://www.7softindia.com/wp/',
-    iconSvg: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M14.5 4.5C14.5 3.11929 13.3807 2 12 2C10.6193 2 9.5 3.11929 9.5 4.5C9.5 5.88071 10.6193 7 12 7C13.3807 7 14.5 5.88071 14.5 4.5Z"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M17.5 14C17.5 13.4477 17.0523 13 16.5 13H7.5C6.94772 13 6.5 13.4477 6.5 14V19.5C6.5 20.0523 6.94772 20.5 7.5 20.5H16.5C17.0523 20.5 17.5 20.0523 17.5 19.5V14Z"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M12 7V13"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M14.5 13L14.1961 11.2887C14.0369 10.6516 13.4655 10.1901 12.8117 10.1971L11.1883 10.2102C10.5345 10.2171 9.96309 10.6834 9.80386 11.3228L9.5 13"
-          stroke="#A93118"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+    'seven-soft-india': (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.5 4.5C14.5 3.11929 13.3807 2 12 2C10.6193 2 9.5 3.11929 9.5 4.5C9.5 5.88071 10.6193 7 12 7C13.3807 7 14.5 5.88071 14.5 4.5Z" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M17.5 14C17.5 13.4477 17.0523 13 16.5 13H7.5C6.94772 13 6.5 13.4477 6.5 14V19.5C6.5 20.0523 6.94772 20.5 7.5 20.5H16.5C17.0523 20.5 17.5 20.0523 17.5 19.5V14Z" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M12 7V13" stroke="#A93118" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
-    ),
-  },
-];
+    )
+  };
+  
+  return iconMap[companyId] || iconMap['pnb-kitchenmate'];
+}
 
 // Animation variants
 const containerVariants = {
@@ -335,12 +186,13 @@ export default function ProductsCategriesPage() {
             >
               <div className="bg-[#FEF6E6] rounded-xl overflow-hidden border border-amber-200 h-full shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden">
-                  <Image
+                  <PlaceholderImage
                     src={category.image}
                     alt={category.title}
                     width={600}
                     height={400}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 md:hover:scale-110"
+                    type="company"
                   />
 
                   {/* Decorative overlay */}
@@ -364,27 +216,32 @@ export default function ProductsCategriesPage() {
                     </p>
                   </div>
 
-                  <Link
-                    href={category.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <motion.div
-                      className="w-full flex items-center justify-center px-5 py-3 rounded-lg text-white transition-all duration-300 text-sm md:text-base"
-                      style={{
-                        background:
-                          'linear-gradient(90deg, #973116 0%, #B8520F 50%, #E18931 100%)',
-                      }}
-                      whileHover={{
-                        scale: 1.02,
-                        boxShadow: '0px 4px 15px rgba(183, 85, 39, 0.25)',
-                      }}
-                      whileTap={{ scale: 0.98 }}
+                  <div className="flex space-x-2">
+                    <Link href={category.link} className="flex-1">
+                      <motion.div
+                        className="w-full flex items-center justify-center px-4 py-2 rounded-lg text-white transition-all duration-300 text-sm"
+                        style={{
+                          background: `linear-gradient(90deg, ${category.brandColor} 0%, #B8520F 50%, #E18931 100%)`,
+                        }}
+                        whileHover={{
+                          scale: 1.02,
+                          boxShadow: '0px 4px 15px rgba(183, 85, 39, 0.25)',
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className="mr-1">View Company</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </motion.div>
+                    </Link>
+                    <Link
+                      href={category.companyLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-2 border border-amber-300 rounded-lg text-amber-700 text-sm hover:bg-amber-50 transition-colors duration-200"
                     >
-                      <span className="mr-2">Explore Products</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </motion.div>
-                  </Link>
+                      Website
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>
