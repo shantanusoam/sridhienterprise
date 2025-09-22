@@ -18,6 +18,7 @@ export interface Company {
     email?: string;
     phone?: string;
     address?: string;
+    website?: string;
   };
   products: Product[];
   established?: number;

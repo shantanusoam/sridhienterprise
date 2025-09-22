@@ -30,9 +30,9 @@ const CompanyFilter = ({ companies, onFilterChange, className = '' }: CompanyFil
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Get unique categories and specialties
-  const categories = [...new Set(companies.map(company => company.category))];
+  const categories = Array.from(new Set(companies.map(company => company.category)));
   const allSpecialties = companies.flatMap(company => company.specialties);
-  const specialties = [...new Set(allSpecialties)].slice(0, 10); // Limit to top 10
+  const specialties = Array.from(new Set(allSpecialties)).slice(0, 10); // Limit to top 10
 
   const applyFilters = (newFilters: FilterState) => {
     let filtered = companies;
