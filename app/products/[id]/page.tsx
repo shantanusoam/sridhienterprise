@@ -1,19 +1,12 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { COLORS } from '@/lib/constants'
-
-const products = [
-  { id: 1, name: 'Stainless Steel Cookware Set', category: 'Kitchenware', brand: 'PNB Kitchenmate', price: 2999, image: '/placeholder.svg?height=600&width=600', description: 'High-quality stainless steel cookware set, perfect for all your cooking needs.' },
-  { id: 2, name: 'Assorted Sweets Box', category: 'Snacks', brand: 'Bhikharam Chandmal', price: 599, image: '/placeholder.svg?height=600&width=600', description: 'A delightful assortment of traditional Indian sweets.' },
-  { id: 3, name: 'Herbal Face Wash', category: 'Personal Care', brand: 'Vaadi Herbals', price: 199, image: '/placeholder.svg?height=600&width=600', description: 'Natural herbal face wash for clean and refreshed skin.' },
-  { id: 4, name: 'Non-Stick Frying Pan', category: 'Kitchenware', brand: 'PNB Kitchenmate', price: 799, image: '/placeholder.svg?height=600&width=600', description: 'Durable non-stick frying pan for easy cooking and cleaning.' },
-  { id: 5, name: 'Spicy Mixture', category: 'Snacks', brand: 'Bhikharam Chandmal', price: 149, image: '/placeholder.svg?height=600&width=600', description: 'A savory and spicy snack mix, perfect for any time of day.' },
-  { id: 6, name: 'Aloe Vera Moisturizer', category: 'Personal Care', brand: 'Vaadi Herbals', price: 249, image: '/placeholder.svg?height=600&width=600', description: 'Soothing aloe vera moisturizer for soft and hydrated skin.' },
-]
+import { getAllProducts, Product } from '@/lib/companies'
+import PlaceholderImage from '@/components/ui/placeholder-image'
 
 export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.find(p => p.id === parseInt(params.id))
+  const products = getAllProducts()
+  const product = products.find(p => p.id === params.id)
 
   if (!product) {
     notFound()
@@ -23,22 +16,65 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="relative h-96 md:h-full">
-          <Image
+          <PlaceholderImage
             src={product.image}
-            alt={product.name}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
+            alt={product.title}
+            fill
+            className="object-cover rounded-lg"
+            type="product"
           />
         </div>
         <div>
-          <h1 className={`text-3xl font-bold mb-4 text-${COLORS.primary}`}>{product.name}</h1>
-          <p className={`text-xl mb-2 text-${COLORS.secondary}`}>{product.brand}</p>
-          <p className={`text-2xl font-bold mb-4 text-${COLORS.primary}`}>₹{product.price}</p>
-          <p className={`mb-6 text-${COLORS.text}`}>{product.description}</p>
-          <p className={`mb-6 text-${COLORS.text}`}>Category: {product.category}</p>
-          <Button className={`bg-${COLORS.secondary} hover:bg-${COLORS.primary} text-white`}>
-            Add to Cart
+          <h1 className="text-3xl font-bold mb-4 text-red-600">{product.title}</h1>
+          <p className="text-xl mb-2 text-emerald-600">{product.companyName}</p>
+          <p className="text-2xl font-bold mb-4 text-red-600">
+            ₹{product.salePrice || product.price || 'Price on request'}
+          </p>
+          {product.description && (
+            <p className="mb-6 text-gray-700">{product.description}</p>
+          )}
+          <div className="mb-6 space-y-2">
+            <p className="text-gray-700">Category: {product.category}</p>
+            {product.subcategory && (
+              <p className="text-gray-700">Subcategory: {product.subcategory}</p>
+            )}
+            <p className="text-gray-700">
+              Availability: 
+              <span className={`ml-2 inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                product.availability === 'In stock' 
+                  ? 'bg-green-100 text-green-800' 
+                  : product.availability === 'Limited stock'
+                  ? 'bg-yellow-100 text-yellow-800'
+                  : 'bg-red-100 text-red-800'
+              }`}>
+                {product.availability}
+              </span>
+            </p>
+          </div>
+          {product.features && product.features.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">Features:</h3>
+              <ul className="list-disc list-inside space-y-1">
+                {product.features.map((feature, index) => (
+                  <li key={index} className="text-gray-700">{feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {product.specifications && Object.keys(product.specifications).length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">Specifications:</h3>
+              <div className="space-y-1">
+                {Object.entries(product.specifications).map(([key, value]) => (
+                  <p key={key} className="text-gray-700">
+                    <span className="font-medium">{key}:</span> {value}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+          <Button className="bg-emerald-600 hover:bg-red-600 text-white">
+            Contact for Quote
           </Button>
         </div>
       </div>

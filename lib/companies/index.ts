@@ -9,20 +9,22 @@ import { sevenSoftIndia } from './seven-soft-india';
 
 // Export all companies
 export const companies: Company[] = [
-  pnbKitchenmate,
+ 
   bhikharamChandmal,
   vaadiHerbals,
   sarlaMills,
-  sevenSoftIndia
+  sevenSoftIndia,
+  pnbKitchenmate,
 ];
 
 // Export individual companies
 export {
-  pnbKitchenmate,
+
   bhikharamChandmal,
   vaadiHerbals,
   sarlaMills,
-  sevenSoftIndia
+  sevenSoftIndia,
+  pnbKitchenmate,
 };
 
 // Export types
@@ -146,18 +148,20 @@ export const getPriceRange = (): { min: number; max: number } => {
 
 // Constants for easy access
 export const COMPANY_IDS = {
-  PNB_KITCHENMATE: 'pnb-kitchenmate',
+
   BHIKHARAM_CHANDMAL: 'bhikharam-chandmal',
   VAADI_HERBALS: 'vaadi-herbals',
   SARLA_MILLS: 'sarla-mills',
-  SEVEN_SOFT_INDIA: 'seven-soft-india'
+  SEVEN_SOFT_INDIA: 'seven-soft-india',
+  PNB_KITCHENMATE: 'pnb-kitchenmate',
 } as const;
 
 export const COMPANY_SLUGS = {
-  PNB_KITCHENMATE: 'pnb-kitchenmate',
+
   BHIKHARAM_CHANDMAL: 'bhikharam-chandmal',
   VAADI_HERBALS: 'vaadi-herbals',
   SARLA_MILLS: 'sarla-mills',
-  SEVEN_SOFT_INDIA: 'seven-soft-india'
+  SEVEN_SOFT_INDIA: 'seven-soft-india',
+  PNB_KITCHENMATE: 'pnb-kitchenmate',
 } as const;
 

@@ -1,149 +1,87 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { COLORS } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
+import { getAllProducts, Product, ProductFilter, filterProducts } from "@/lib/companies";
+import PlaceholderImage from "@/components/ui/placeholder-image";
 
-const products = [
-  {
-    id: 1,
-    name: "Stainless Steel Cookware Set",
-    category: "Kitchenware",
-    brand: "PNB Kitchenmate",
-    price: 2999,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 2,
-    name: "Assorted Sweets Box",
-    category: "Snacks",
-    brand: "Bhikharam Chandmal",
-    price: 599,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 3,
-    name: "Herbal Face Wash",
-    category: "Personal Care",
-    brand: "Vaadi Herbals",
-    price: 199,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 4,
-    name: "Non-Stick Frying Pan",
-    category: "Kitchenware",
-    brand: "PNB Kitchenmate",
-    price: 799,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 5,
-    name: "Spicy Mixture",
-    category: "Snacks",
-    brand: "Bhikharam Chandmal",
-    price: 149,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 6,
-    name: "Aloe Vera Moisturizer",
-    category: "Personal Care",
-    brand: "Vaadi Herbals",
-    price: 249,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 7,
-    name: "Electric Kettle",
-    category: "Kitchenware",
-    brand: "PNB Kitchenmate",
-    price: 1299,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 8,
-    name: "Dry Fruit Collection",
-    category: "Snacks",
-    brand: "Bhikharam Chandmal",
-    price: 899,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-  {
-    id: 9,
-    name: "Herbal Shampoo",
-    category: "Personal Care",
-    brand: "Vaadi Herbals",
-    price: 299,
-    image: "/placeholder.svg?height=300&width=300",
-  },
-];
+interface ProductGridProps {
+  filters?: ProductFilter;
+}
 
-const ProductGrid = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-  const totalPages = Math.ceil(products.length / productsPerPage);
+const ProductGrid = ({ filters }: ProductGridProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    console.log('ProductGrid filters changed:', filters);
+    if (filters) {
+      const filteredProducts = filterProducts(filters);
+      console.log('Filtered products count:', filteredProducts.length);
+      console.log('First few filtered products:', filteredProducts.slice(0, 3).map(p => ({ id: p.id, title: p.title, companyId: p.companyId })));
+      setProducts(filteredProducts);
+    } else {
+      const allProducts = getAllProducts();
+      console.log('All products count:', allProducts.length);
+      setProducts(allProducts);
+    }
+  }, [filters]);
 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {currentProducts.map((product) => (
+        {products.map((product) => (
           <motion.div
             key={product.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className={`bg-${COLORS.white} rounded-lg shadow-lg overflow-hidden`}
+            className="bg-white rounded-lg shadow-lg overflow-hidden"
           >
             <Link href={`/products/${product.id}`}>
               <div className="relative h-64">
-                <Image
+                <PlaceholderImage
                   src={product.image}
-                  alt={product.name}
-                  layout="fill"
-                  objectFit="cover"
+                  alt={product.title}
+                  fill
+                  className="object-cover"
+                  type="product"
                 />
               </div>
               <div className="p-6">
-                <h3
-                  className={`text-xl font-semibold mb-2 text-${COLORS.primary}`}
-                >
-                  {product.name}
+                <h3 className="text-xl font-semibold mb-2 text-red-600">
+                  {product.title}
                 </h3>
-                <p className={`text-${COLORS.text} mb-2`}>{product.brand}</p>
-                {/* <p className={`text-${COLORS.secondary} font-bold`}>₹{product.price}</p> */}
-                <p className={`text-sm text-${COLORS.text} mt-2`}>
+                <p className="text-gray-700 mb-2">{product.companyName}</p>
+                <p className="text-emerald-600 font-bold mb-2">
+                  ₹{product.salePrice || product.price || 'Price on request'}
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
                   {product.category}
                 </p>
+                <div className="mt-2">
+                  <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                    product.availability === 'In stock' 
+                      ? 'bg-green-100 text-green-800' 
+                      : product.availability === 'Limited stock'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : 'bg-red-100 text-red-800'
+                  }`}>
+                    {product.availability}
+                  </span>
+                </div>
               </div>
             </Link>
           </motion.div>
         ))}
       </div>
-      <div className="mt-8 flex justify-center space-x-2">
-        <Button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </Button>
-        <Button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </Button>
+      
+      {/* Debug info */}
+      <div className="mt-4 p-4 bg-gray-100 rounded-lg text-sm">
+        <p><strong>Debug Info:</strong></p>
+        <p>Total Products: {products.length}</p>
+        <p>Showing: {products.length} products (all products, no pagination)</p>
+        <p>Filters: {JSON.stringify(filters)}</p>
       </div>
     </div>
   );

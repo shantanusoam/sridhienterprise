@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import {
   Accordion,
   AccordionContent,
@@ -10,23 +11,42 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { COLORS } from "@/lib/constants";
+import { getProductCategories, companies, ProductFilter as ProductFilterType } from "@/lib/companies";
+import { Search } from "lucide-react";
 
-const categories = [
-  "Kitchenware",
-  "Snacks | Namkeen | Sweets",
-  "Personal Care",
-  "blanket",
-];
-const brands = [
-  "PNB Kitchenmate",
-  "Bhikharam Chandmal",
-  "Vaadi Herbals",
-  "Sarla Blankets",
-];
+interface ProductFilterProps {
+  onFilterChange: (filters: ProductFilterType) => void;
+}
 
-const ProductFilter = () => {
+const ProductFilter = ({ onFilterChange }: ProductFilterProps) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [categories, setCategories] = useState<string[]>([]);
+  const [brands, setBrands] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Get unique categories and company names
+    setCategories(getProductCategories());
+    setBrands(companies.map(company => company.name));
+  }, []);
+
+  useEffect(() => {
+    // Notify parent component of filter changes
+    const filters: ProductFilterType = {};
+    if (selectedCategories.length > 0) {
+      filters.categories = selectedCategories;
+    }
+    if (selectedBrands.length > 0) {
+      filters.companies = companies
+        .filter(company => selectedBrands.includes(company.name))
+        .map(company => company.id);
+    }
+    if (searchQuery.trim()) {
+      filters.search = searchQuery.trim();
+    }
+    onFilterChange(filters);
+  }, [selectedCategories, selectedBrands, searchQuery, onFilterChange]);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories((prev) =>
@@ -43,10 +63,29 @@ const ProductFilter = () => {
   };
 
   return (
-    <div className={`bg-${COLORS.white} p-6 rounded-lg shadow-md`}>
-      <h2 className={`text-2xl font-semibold mb-4 text-${COLORS.primary}`}>
+    <div className="bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-semibold mb-4 text-red-600">
         Filters
       </h2>
+      
+      {/* Search Input */}
+      <div className="mb-6">
+        <Label htmlFor="search" className="text-sm font-medium mb-2 block">
+          Search Products
+        </Label>
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Input
+            id="search"
+            type="text"
+            placeholder="Search by name, category, or company..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+      </div>
+
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="categories">
           <AccordionTrigger>Categories</AccordionTrigger>
@@ -69,7 +108,7 @@ const ProductFilter = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="brands">
-          <AccordionTrigger>Brands</AccordionTrigger>
+          <AccordionTrigger>Companies</AccordionTrigger>
           <AccordionContent>
             {brands.map((brand) => (
               <div key={brand} className="flex items-center space-x-2 mb-2">

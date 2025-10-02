@@ -36,6 +36,7 @@ export interface Product {
   title: string;
   url: string;
   image?: string | null;
+  _original_image?: string;
   regularPrice?: number;
   salePrice?: number;
   price?: number;
