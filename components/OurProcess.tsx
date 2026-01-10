@@ -293,7 +293,7 @@ export default function OurProcess() {
   return (
     <section 
       ref={containerRef}
-      className="relative py-16 md:py-24 overflow-hidden bg-[#FDFCF6]"
+      className="relative pb-16 md:pb-24 pt-8 overflow-hidden bg-[#FDFCF6]"
     >
       <MandalaBackground />
 

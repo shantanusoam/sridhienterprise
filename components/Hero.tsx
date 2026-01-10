@@ -19,8 +19,21 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation'; // If using default navigation elements (we'll customize)
 
 // Import images (ensure paths are correct from /public)
-import heroPro1 from '/public/HeroProducts.webp';
-import heroPro2 from '/public/Hero2.png';
+// import heroPro1 from '/public/HeroProducts.webp';
+// import heroPro2 from '/public/Hero2.png';
+
+// Distributors Data
+const distributors = [
+  { name: 'CRPF', src: '/destributors/CRPF_Logo.svg.png', aspect: 'square' },
+  { name: 'BSF', src: '/destributors/BSF_Logo.svg.png', aspect: 'square' },
+  { name: 'CISF', src: '/destributors/CISF_LOGO.svg.png', aspect: 'square' },
+  { name: 'ITBP', src: '/destributors/ITBP_Logo.svg.png', aspect: 'square' },
+  { name: 'SSB', src: '/destributors/Sashastra_Seema_Bal.svg.png', aspect: 'square' },
+  { name: 'Assam Rifles', src: '/destributors/assam rifal.jpeg', aspect: 'square' },
+  { name: 'UP Police', src: '/destributors/up-police-logo-uttar-pradesh-police-up-police-logo-11563421838xjer0uaxol.png', aspect: 'square' },
+  { name: 'TN Police', src: '/destributors/185-1854893_tn-police-department-logo-tamil-nadu-police-flag.png', aspect: 'wide' },
+  { name: 'GeM', src: '/destributors/2560px-GeM-logo.svg.png', aspect: 'wide' },
+];
 
 // Assuming other images might be external URLs or imported similarly
 const externalImage1 =
@@ -39,6 +52,30 @@ interface Slide {
 }
 
 const slides: Slide[] = [
+  {
+    image: '/distributorcanteens/image.png',
+    titleLines: ['Trusted by', 'CAPFs  Canteens'],
+    subtitle: 'Reliable Supply Chain for BSF & CRPF',
+    alt: 'Distributor canteen facility overview',
+  },
+  {
+    image: '/distributorcanteens/image (1).png',
+    titleLines: ['Serving Those', 'Who Serve'],
+    subtitle: 'Dedicated Distribution Network Across India',
+    alt: 'Distribution center operations',
+  },
+  {
+    image: '/distributorcanteens/image (2).png',
+    titleLines: ['Premium Canteen', 'Buyers'],
+    subtitle: 'Quality Products for Our Armed Forces',
+    alt: 'Stocked canteen shelves',
+  },
+  {
+    image: '/distributorcanteens/image (3).png',
+    titleLines: ['Nationwide', 'Reach'],
+    subtitle: 'Connecting Premium Brands to Remote Canteens',
+    alt: 'Delivery and logistics network',
+  },
   {
     image: externalImage1,
     titleLines: ['Bridging Excellence', 'to Service'],
@@ -138,6 +175,46 @@ const buttonVariants = {
   exit: { opacity: 0, scale: 0.9, transition: { duration: 0.2 } },
 };
 
+const LogoMarquee = () => {
+  return (
+    <div className="absolute bottom-0 left-0 right-0 z-20 h-24 bg-gradient-to-t from-black via-black/80 to-transparent flex items-center overflow-hidden pointer-events-auto">
+      <div className="relative w-full flex items-center overflow-hidden">
+        {/* Gradients for smooth fade on sides */}
+        <div className="absolute top-0 bottom-0 left-0 w-32 z-10 bg-gradient-to-r from-gray-900 to-transparent"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-32 z-10 bg-gradient-to-l from-gray-900 to-transparent"></div>
+        
+        <motion.div
+          className="flex items-center gap-16 px-4"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            duration: 40,
+          }}
+          style={{ width: "fit-content" }}
+        >
+          {/* Triplicate list for seamless loop and enough length */}
+          {[...distributors, ...distributors, ...distributors].map((dist, idx) => (
+             <div 
+               key={`${dist.name}-${idx}`} 
+               className="relative h-14 w-auto  transition-all duration-500 transform hover:scale-110 flex items-center justify-center shrink-0 cursor-pointer"
+               title={dist.name}
+             >
+               <Image
+                 src={dist.src}
+                 alt={dist.name}
+                 height={56}
+                 width={140}
+                 className="h-full w-auto object-contain max-w-[140px] drop-shadow-md"
+               />
+             </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperInstance | null>(
@@ -159,7 +236,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative h-[55vh] md:h-[65vh] w-full overflow-hidden bg-gray-900" // Ensure background for image load
+      className="relative h-[55vh] md:h-[75vh] w-full overflow-hidden bg-gray-900" // Ensure background for image load
       onMouseEnter={() => setIsInteracting(true)}
       onMouseLeave={() => setIsInteracting(false)}
       onTouchStart={() => setIsInteracting(true)} // Handle touch interaction
@@ -318,10 +395,12 @@ const Hero = () => {
         <ChevronRight className="w-5 h-5 md:w-7 md:h-7" />
       </button>
 
+      <LogoMarquee />
+
       {/* Custom Pagination Styles (applied via global CSS or styled components) */}
       <style jsx global>{`
         .swiper-pagination {
-          bottom: 20px !important; /* Adjust position */
+          bottom: 100px !important; /* Adjust position above marquee */
         }
         .hero-pagination-bullet {
           width: 10px;
