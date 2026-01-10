@@ -19,19 +19,13 @@ const distributors = [
     link: '#',
     category: 'Paramilitary',
   },
-  {
-    title: 'Police Canteens',
-    description: 'Supplying essential goods to Police Canteens with reliability and efficiency.',
-    image: '/distributorcanteens/image (2).png',
-    link: '#',
-    category: 'Police',
-  },
+
   {
     title: 'CISF Canteens',
-    description: 'Partnering with various government institutions to meet their procurement needs.',
+    description: 'Partnering with Central Industrial Security Force to meet their procurement needs.',
     image: '/distributorcanteens/image (3).png',
     link: '#',
-    category: 'Government',
+    category: 'Paramilitary',
   },
   {
     title: 'ITBP Canteens',
@@ -53,6 +47,13 @@ const distributors = [
     image: '/distributorcanteens/image (5).png',
     link: '#',
     category: 'Paramilitary',
+  },
+  {
+    title: 'State Police Canteens',
+    description: 'Supplying essential goods to Police Canteens with reliability and efficiency.',
+    image: '/distributorcanteens/image (2).png',
+    link: '#',
+    category: 'Police',
   },
 ];
 
