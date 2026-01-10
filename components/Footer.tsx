@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -35,9 +34,9 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-semibold mb-4">Contact</h3>
             <div className="space-y-2">
-              <p>Phone: +91 123 456 7990</p>
-              <p>Email: info@srichienterprises.com</p>
-              <p>123 Distribution Lane,<br />New Delhi<br />India 110001</p>
+              <p>Phone: +91 9671154102</p>
+              <p>Email: info@sridhienterprises.in</p>
+              <p>Sridhi Enterprises Pvt. Ltd.<br />Second Floor, SCO-151,<br />Omaxe City, Sector 19,<br />Sonipat, Haryana, India - 131001</p>
             </div>
           </div>
           
@@ -110,7 +109,7 @@ const Footer = () => {
         
         {/* Copyright section */}
         <div className="py-4 text-center">
-          <p>&copy; 2023 Srichi Enterprises. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sridhi Enterprises. All rights reserved.</p>
         </div>
       </div>
     </footer>
