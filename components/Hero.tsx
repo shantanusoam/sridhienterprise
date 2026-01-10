@@ -90,7 +90,7 @@ const slides: Slide[] = [
   },
   {
     image: externalImage3, // Use imported image
-    titleLines: ['Pan-India', 'Distribution'],
+    titleLines: ['Quality Without', 'Compromise'],
     subtitle: 'Reaching Every Corner with Precision and Care',
     alt: 'Sridhi Enterprises product variety',
   },
@@ -102,7 +102,8 @@ const slides: Slide[] = [
   },
   {
     image: externalImage5,
-    titleLines: ['Quality Without', 'Compromise'],
+    titleLines: ['Pan-India', 'Distribution'],
+
     subtitle: 'Serving Those Who Serve Our Nation',
     alt: 'Close-up of quality food products',
   },
