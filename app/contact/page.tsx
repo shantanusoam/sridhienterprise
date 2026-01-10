@@ -61,14 +61,15 @@ export default function ContactPage() {
               Contact Information
             </h2>
             <p className={`mb-2 text-${COLORS.text}`}>
-              <strong>Address:</strong> 123 Distribution Lane, New Delhi, India
-              110001
+              <strong>Address:</strong> Sridhi Enterprises Pvt. Ltd.<br />
+              Second Floor, SCO-151, Omaxe City, Sector 19,<br />
+              Sonipat, Haryana, India - 131001
             </p>
             <p className={`mb-2 text-${COLORS.text}`}>
-              <strong>Phone:</strong> +91 123 456 7890
+              <strong>Phone:</strong> +91 9671154102
             </p>
             <p className={`mb-2 text-${COLORS.text}`}>
-              <strong>Email:</strong> info@sridhienterprises.com
+              <strong>Email:</strong> info@sridhienterprises.in
             </p>
           </div>
           <div className={`bg-${COLORS.white} p-6 rounded-lg shadow-md`}>

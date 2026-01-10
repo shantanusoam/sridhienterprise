@@ -9,12 +9,13 @@ import { sevenSoftIndia } from './seven-soft-india';
 
 // Export all companies
 export const companies: Company[] = [
- 
+  pnbKitchenmate,
   bhikharamChandmal,
   vaadiHerbals,
-  sarlaMills,
   sevenSoftIndia,
-  pnbKitchenmate,
+  sarlaMills,
+
+
 ];
 
 // Export individual companies

@@ -155,7 +155,7 @@ export default function ProductsCategriesPage() {
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 md:mb-8 px-2"
           style={{ color: '#A93118', fontFamily: 'Lora, serif' }}
         >
-          Our Product Categories
+          Our Associate Companies
         </motion.h2>
 
         <motion.p

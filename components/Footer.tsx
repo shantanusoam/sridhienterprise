@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
           
           {/* Follow Us section */}
-          <div>
+          {/* <div>
             <h3 className="text-2xl font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-6">
               <a href="#" className="text-black hover:text-[#D2B883] transition-colors">
@@ -80,18 +80,18 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+           */}
           {/* Newsletter section with lotus logo */}
           <div className="flex flex-col items-start">
             <div className="flex flex-col items-center mb-4 md:items-start">
-              <div className="mb-4 relative w-24 h-24">
+              {/* <div className="mb-4 relative w-24 h-24">
                 <Image 
                   src="/logo-gold.png" 
                   alt="Srichi Enterprises Logo" 
                   layout="fill"
                   objectFit="contain"
                 />
-              </div>
+              </div> */}
               <h3 className="text-2xl font-semibold">Stay updated</h3>
               <p className="text-md">with our latest news and offers.</p>
             </div>

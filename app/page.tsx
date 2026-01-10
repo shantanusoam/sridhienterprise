@@ -42,7 +42,7 @@ export default function Home() {
 
           {/* <ProductCategories /> */}
           <OurProcess />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <motion.section
             initial="hidden"
             whileInView="visible"

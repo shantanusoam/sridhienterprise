@@ -27,9 +27,9 @@ const processTabs = [
   {
     value: 'quality',
     title: 'Quality Check',
-    description: 'Rigorous quality standards',
+    description: 'Rigorous quality standards and custom pricing and availability as per client needs',
     content:
-      'Every product undergoes thorough quality control processes to ensure it meets our strict standards before being distributed to our clients.',
+      'Every product undergoes thorough quality control processes  before being distributed to our clients. We also offer custom pricing and availability as per client needs.',
     color: colors.quality,
   },
   {
@@ -37,7 +37,7 @@ const processTabs = [
     title: 'Distribution',
     description: 'Efficient nationwide network',
     content:
-      'Our extensive distribution network and logistics expertise ensure that products reach our clients efficiently, even in remote locations.',
+      'Our extensive distribution network. ensure that products reach our clients efficiently, even in remote locations.',
     color: colors.distribution,
   },
   {

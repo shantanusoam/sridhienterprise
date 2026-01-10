@@ -377,7 +377,7 @@ const ProductCategories = () => {
           className="text-4xl md:text-5xl font-bold font-heading text-center mb-12 md:mb-16"
           style={{ color: '#A93118', fontFamily: "'Lora', serif" }} // Ensure font name is quoted if it contains spaces
         >
-          Our Product Categories
+                 Our Associate Companies
         </motion.h2>
 
         <div className="relative px-0 md:px-10">

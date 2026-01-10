@@ -7,8 +7,8 @@ import Image from 'next/image';
 
 const stats = [
   { label: 'Years of Excellence', value: '14+' },
-  { label: 'Products Distributed', value: '1,500+' },
-  { label: 'Satisfied Clients', value: '570' },
+  // { label: 'Products Distributed', value: '1,500+' },
+  { label: 'Satisfied Clients', value: '1570' },
   { label: 'States', value: '28' },
 ];
 
@@ -78,9 +78,9 @@ const services = [
     ),
   },
   {
-    title: 'Advanced Inventory Solutions',
+    title: 'Inventory consistency and availability',
     description:
-      'Our cutting-edge inventory management systems ensure optimal stock levels and minimal fulfillment times.',
+      'We ensure that the products are always available and in stock to meet the needs of our clients.',
     icon: '📦',
     iconSvg: (
       <svg
@@ -423,7 +423,7 @@ export default function StatsAndServicesSection() {
             initial="hidden"
             animate={controls}
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -508,7 +508,7 @@ export default function StatsAndServicesSection() {
                   <p className="text-amber-800 flex-grow text-center mb-4">
                     {service.description}
                   </p>
-                  <div className="text-center">
+                  {/* <div className="text-center">
                     <Link href="/services">
                       <motion.div
                         className="inline-block px-6 py-2 rounded-lg border border-amber-500 text-amber-800 hover:bg-amber-500 hover:text-white transition-colors duration-300"
@@ -518,7 +518,7 @@ export default function StatsAndServicesSection() {
                         Learn More
                       </motion.div>
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

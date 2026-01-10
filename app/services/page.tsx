@@ -21,7 +21,7 @@ const services = [
     icon: '🚚',
     details: [
       'Pan-India coverage',
-      'Strategically located warehouses',
+   
       'Efficient last-mile delivery',
       'Real-time tracking system'
     ]
