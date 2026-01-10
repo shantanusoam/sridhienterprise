@@ -54,8 +54,8 @@ interface Slide {
 const slides: Slide[] = [
   {
     image: '/distributorcanteens/image.png',
-    titleLines: ['Trusted by', 'CAPFs  Canteens'],
-    subtitle: 'Reliable Supply Chain for BSF & CRPF',
+    titleLines: ['Reliable Supply Chain ', 'For CAPFs  Canteens'],
+    subtitle: 'Trusted by all armed force',
     alt: 'Distributor canteen facility overview',
   },
   {
