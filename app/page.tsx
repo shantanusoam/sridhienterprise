@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import AboutSection from '@/components/about-section';
 import ServicesSection from '@/components/services-section';
 import ProductsCategriesPage from '@/components/categries-section';
+import DistributorsSection from '@/components/distributors-section';
 
 import OurProcess from '@/components/OurProcess';
 import StatsAndServicesSection from '@/components/StatsandServiceSection';
@@ -75,6 +76,10 @@ export default function Home() {
 
       <div className="relative">
         <ProductsCategriesPage />
+      </div>
+
+      <div className="relative">
+        <DistributorsSection />
       </div>
 
       {/* Premium “foundation” panel for the lower half of the homepage */}
