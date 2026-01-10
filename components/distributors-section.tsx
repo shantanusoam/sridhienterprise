@@ -22,7 +22,7 @@ const distributors = [
 
   {
     title: 'CISF Canteens',
-    description: 'Partnering with Central Industrial Security Force to meet their procurement needs.',
+    description: 'Serving the Central Industrial Security Force to meet their procurement needs.',
     image: '/distributorcanteens/image (3).png',
     link: '#',
     category: 'Paramilitary',
