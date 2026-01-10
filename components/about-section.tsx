@@ -102,26 +102,32 @@ export default function AboutSection() {
                   Our History
                 </h2>
                 <p className="text-lg">
-                
+                  Established in 2012, Sridhi Enterprises has been a trusted
+                  distributor dedicated to serving the needs of serving and
+                  retired personnel of Central Armed Police Forces CAPFs (BSF,
+                  CRPF, CISF, ITBP, SSB, Assam Rifles, RPF, IB, SPG and All State
+                  Police Organizations).
+                  <br /> The ministry of Home Affairs has setup the Kendriya
+                  Police kalyan bhandar that came into existence in 2006. As of
+                  now there are 119 Master Bhandar which act as distribution
+                  centers and 2200 subsidiary canteens across India, serving
+                  families across the country.
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div>
-                      Established in 2012, Sridhi Enterprises has been a trusted
-                  distributor dedicated to serving the needs of serving and
-                  retired personnel of Central Armed Police Forces CAPFs (BSF, CRPF, CISF, ITBP, SSB, Assam Rifles, RPF, IB, SPG and All State Police Organizations) <br/> The ministry of Home Affairs has setup the Kendriya Police kalyan bhandar that came into existence in 2006.
-              as of now there are 119 Master Bhandar witch act as destribution center and 2200 hundred subsidery canteen across India. witch sells products to the families across India.
-                  <span className="ml-2 inline-block cursor-pointer align-middle">
-                        <Info 
-                          className="h-4 w-4 text-[#D2722F]" 
-                          aria-label="Proprietorship running since 2019"
-                        />
-                      </span>
-                      </div>
-                
+                      <button
+                        type="button"
+                        className="ml-2 inline-flex align-middle"
+                        aria-label="More information"
+                      >
+                        <Info className="h-4 w-4 text-[#D2722F]" />
+                      </button>
                     </TooltipTrigger>
-                    {/* <TooltipContent>
-                      <p>Our proprietorship has been operating since 2019, with the company officially registered in 2024.</p>
-                    </TooltipContent> */}
+                    <TooltipContent>
+                      <p>
+                        Our proprietorship has been operating since 2019, with
+                        the company officially registered in 2024.
+                      </p>
+                    </TooltipContent>
                   </Tooltip>
                 </p>
               </div>

@@ -4,8 +4,7 @@
 
 /* Font: Swap to a more artistic serif font for Indian cultural elegance */
 body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  @apply bg-background text-foreground;
+  @apply bg-background text-foreground font-body antialiased;
 }
 
 /* Custom cursor interactions */

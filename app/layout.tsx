@@ -1,9 +1,7 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Inter, Lato, Playfair_Display } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-// In your layout.js or relevant component
-import { Playfair_Display, Lato } from '@next/font/google';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -33,8 +31,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
-      <body className={`${inter.className} ]`}>
+    <html
+      lang="en"
+      className={`${playfair.variable} ${lato.variable} scroll-smooth`}
+    >
+      <body className={`${inter.className} font-body antialiased`}>
         <Header />
         <main className="min-h-screen pt-16">{children}</main>
         <Footer />

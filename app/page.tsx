@@ -1,13 +1,6 @@
 'use client';
-// import { Metadata } from "next";
 import Link from 'next/link';
-// import Image from "next/image";
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-// import { useInView } from "react-intersection-observer";
-// import ProductCategories from "@/components/ProductCategories";
-import Testimonials from '@/components/Testimonials';
-// import Footer from "@/components/Footer";
 
 import { motion } from 'framer-motion';
 
@@ -27,121 +20,145 @@ const fadeIn = {
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main>
-        <CustomCursor />
-        <Hero />
-        <ServicesSection />
-        <AboutSection />
-        <div className="relative ">
-          <ProductsCategriesPage />
-        </div>
-        <div className="bg-[#FDF3E3]">
-          <StatsAndServicesSection />
+    <div className="relative overflow-hidden">
+      <CustomCursor />
 
-          {/* <ProductCategories /> */}
-          <OurProcess />
-          {/* <Testimonials /> */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            className="py-16 md:py-20 font-serif relative overflow-hidden"
-            style={{
-              backgroundColor: '#F5E6C8',
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23b88c46' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E\")",
-              backgroundSize: '80px',
-            }}
-          >
-            {/* Decorative elements that match the other components */}
-            <div className="absolute inset-0 pointer-events-none opacity-10">
-              <div className="absolute left-0 top-0 w-full h-full">
-                <svg
-                  width="100%"
-                  height="100%"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <pattern
-                      id="ctaPattern"
-                      x="0"
-                      y="0"
-                      width="400"
-                      height="400"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <g fill="none" stroke="#8B4513" strokeWidth="0.5">
-                        <circle cx="200" cy="200" r="150" />
-                        <circle cx="200" cy="200" r="140" />
-                        <circle cx="200" cy="200" r="130" />
-                        <circle cx="200" cy="200" r="120" />
-                        <circle cx="200" cy="200" r="110" />
-                        <circle cx="200" cy="200" r="100" />
-                        <circle cx="200" cy="200" r="90" />
-                        <circle cx="200" cy="200" r="80" />
-                        <circle cx="200" cy="200" r="70" />
-                        <circle cx="200" cy="200" r="60" />
-                        <circle cx="200" cy="200" r="50" />
-                        <circle cx="200" cy="200" r="40" />
+      {/* Ambient background superposition */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(185,82,15,0.22),transparent_62%)] blur-2xl" />
+        <div className="absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,rgba(75,97,69,0.20),transparent_60%)] blur-3xl" />
+        <div className="absolute top-[40vh] -right-24 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,rgba(169,49,24,0.16),transparent_60%)] blur-3xl" />
+      </div>
 
-                        {/* Decorative lines */}
-                        <path d="M 200,50 L 200,350" />
-                        <path d="M 50,200 L 350,200" />
-                        <path d="M 90,90 L 310,310" />
-                        <path d="M 90,310 L 310,90" />
-                      </g>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#ctaPattern)" />
-                </svg>
+      <Hero />
+      <OurProcess />
+      {/* Subtle “trust ribbon” to tighten hierarchy after the hero */}
+      {/* <section className="relative bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="-mt-7 md:-mt-10 relative z-10 rounded-2xl border border-amber-900/10 bg-white/70 backdrop-blur-md shadow-[0_18px_55px_-30px_rgba(0,0,0,0.45)]">
+            <div className="grid gap-4 px-5 py-5 sm:grid-cols-3 sm:items-center sm:gap-6 sm:px-8">
+              <div className="space-y-1">
+                <p className="text-xs font-semibold tracking-[0.22em] text-amber-900/70">
+                  DISTRIBUTION · QUALITY · TRUST
+                </p>
+                <p className="text-lg font-heading font-bold text-amber-950">
+                  Built for canteens that can’t afford compromise
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 sm:col-span-2 sm:gap-4">
+                {[
+                  { k: '14+', v: 'Years' },
+                  { k: '28', v: 'States' },
+                  { k: '1570', v: 'Clients' },
+                ].map((s) => (
+                  <div
+                    key={s.v}
+                    className="rounded-xl border border-amber-900/10 bg-gradient-to-b from-white to-amber-50/60 px-3 py-3 text-center"
+                  >
+                    <div className="text-xl font-heading font-extrabold text-[#A93118]">
+                      {s.k}
+                    </div>
+                    <div className="text-xs font-semibold tracking-wide text-amber-900/70">
+                      {s.v}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section> */}
 
-            <div className="container mx-auto px-4 text-center relative z-10">
-              <motion.h2
-                variants={fadeIn}
-                className="text-4xl md:text-5xl font-bold mb-8"
-                style={{ color: '#A93118', fontFamily: 'Lora, serif' }}
-              >
-                Elevate Your Service Standards
-              </motion.h2>
+      <ServicesSection />
+      <AboutSection />
 
-              <motion.p
-                variants={fadeIn}
-                className="mb-12 text-lg opacity-90 max-w-2xl mx-auto"
-                style={{ color: '#5D3A1A', fontFamily: 'Lora, serif' }}
-              >
-                Join the hundreds of government and paramilitary canteens that
-                trust Sridhi Enterprises to deliver excellence. Let&apos;s build
-                a partnership that serves those who serve our nation.
-              </motion.p>
+      <div className="relative">
+        <ProductsCategriesPage />
+      </div>
 
-              <motion.div variants={fadeIn}>
-                <Link href="/contact">
-                  <div
-                    className="inline-block rounded-lg text-white text-lg px-8 py-4 font-medium transition-all duration-300 hover:shadow-lg"
+      {/* Premium “foundation” panel for the lower half of the homepage */}
+      <section className="relative bg-[#FDF3E3]">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-transparent via-white/25 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-transparent via-white/20 to-transparent" />
+        </div>
+
+        <StatsAndServicesSection />
+   
+
+        {/* Award-feel CTA (cleaner typography + better semantics + richer layering) */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          variants={fadeIn}
+          className="relative overflow-hidden py-16 md:py-20"
+        >
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(1200px_500px_at_50%_-20%,rgba(184,82,15,0.28),transparent_60%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(900px_460px_at_10%_110%,rgba(75,97,69,0.18),transparent_58%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(245,230,200,0.95),rgba(253,243,227,0.95))]" />
+            <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(#8B4513_0.8px,transparent_0.8px)] [background-size:18px_18px]" />
+          </div>
+
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl border border-amber-900/15 bg-white/65 backdrop-blur-md shadow-[0_30px_90px_-55px_rgba(0,0,0,0.55)]">
+              <div aria-hidden className="absolute inset-0">
+                <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[#E18931]/25 blur-3xl" />
+                <div className="absolute -right-28 -bottom-28 h-72 w-72 rounded-full bg-[#4B6145]/20 blur-3xl" />
+              </div>
+
+              <div className="relative px-6 py-10 sm:px-10 sm:py-12 md:px-14">
+                <p className="text-xs font-semibold tracking-[0.26em] text-amber-900/70">
+                  PARTNERSHIP THAT LASTS
+                </p>
+
+                <motion.h2
+                  variants={fadeIn}
+                  className="mt-3 text-balance font-heading text-4xl font-extrabold text-[#A93118] sm:text-5xl"
+                >
+                  Elevate your service standards
+                </motion.h2>
+
+                <motion.p
+                  variants={fadeIn}
+                  className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-amber-950/80 sm:text-lg"
+                >
+                  Join government and paramilitary canteens that trust Sridhi
+                  Enterprises for reliable distribution, quality assurance, and
+                  on-time fulfillment—at scale.
+                </motion.p>
+
+                <motion.div
+                  variants={fadeIn}
+                  className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+                >
+                  <Link
+                    href="/contact"
+                    data-cursor-interactable
+                    className="inline-flex items-center justify-center rounded-xl px-7 py-3 text-base font-semibold text-white shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E18931] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDF3E3] hover:shadow-lg"
                     style={{
                       background:
                         'linear-gradient(90deg, #973116 0%, #B8520F 50%, #E18931 100%)',
-                      fontFamily: 'Lora, serif',
                     }}
                   >
-                    Begin Your Journey With Us
-                  </div>
-                </Link>
-              </motion.div>
-            </div>
+                    Begin your journey with us
+                  </Link>
 
-            {/* Import serif font - this would be included once in a layout component */}
-            <style jsx global>{`
-              @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
-            `}</style>
-          </motion.section>
-        </div>
-      </main>
-    </>
+                  <Link
+                    href="/companies"
+                    data-cursor-interactable
+                    className="inline-flex items-center justify-center rounded-xl border border-amber-900/20 bg-white/60 px-7 py-3 text-base font-semibold text-amber-950/80 backdrop-blur transition-colors hover:bg-white/75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E18931] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDF3E3]"
+                  >
+                    Explore associate companies
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+      </section>
+    </div>
   );
 }

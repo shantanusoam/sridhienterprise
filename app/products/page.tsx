@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import ProductGrid from "@/components/ProductGrid";
-import ProductFilter from "@/components/ProductFilter";
-import { COLORS } from "@/lib/constants";
-import { ProductFilter as ProductFilterType } from "@/lib/companies";
+import { useEffect, useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import ProductGrid from '@/components/ProductGrid';
+import ProductFilter from '@/components/ProductFilter';
+import { ProductFilter as ProductFilterType } from '@/lib/companies';
 
 // Note: metadata export is removed because this is now a client component
 // You might want to move metadata to layout.tsx or create a separate server component wrapper
@@ -16,7 +15,7 @@ function ProductsContent() {
 
   // Initialize filters from URL parameters
   useEffect(() => {
-    const companyParam = searchParams.get('company');
+    const companyParam = searchParams?.get('company');
     if (companyParam) {
       setFilters({ companies: [companyParam] });
     }
