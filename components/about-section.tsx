@@ -7,10 +7,10 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { Info } from 'lucide-react';
 
 // Import available images
-import AboutUS from './../public/AboutUS.png';
-import HeroProducts from './../public/images/kitchenware-category.jpg';
-import CulturalWomen from './../public/CulturalWomen.png';
-import Hero2 from './../public/Hero2.png';
+// import AboutUS from './../public/AboutUS.png';
+// import HeroProducts from './../public/images/kitchenware-category.jpg';
+// import CulturalWomen from './../public/CulturalWomen.png';
+// import Hero2 from './../public/Hero2.png';
 import ExperienceShield from './ExperienceShield';
 
 // Images for slideshow
@@ -24,8 +24,8 @@ const slideImages = [
   //   alt: 'Product showcase 2',
   // },
   {
-    src: CulturalWomen,
-    alt: 'Cultural display',
+    src: '/distributorcanteens/image (5).png',
+    alt: 'Army display',
   },
   // {
   //   src: Hero2,

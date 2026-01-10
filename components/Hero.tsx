@@ -60,7 +60,7 @@ const slides: Slide[] = [
   },
   {
     image: '/distributorcanteens/image (1).png',
-    titleLines: ['Serving Those', 'Who Serve'],
+    titleLines: ['Serving Those', 'Who Serve our Nation'],
     subtitle: 'Dedicated Distribution Network Across India',
     alt: 'Distribution center operations',
   },
