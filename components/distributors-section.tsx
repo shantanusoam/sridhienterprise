@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Shield, Building2, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Shield, Users, Building2 } from 'lucide-react';
 
-// Data for distributors/clients
+// --- DATA ---
 const distributors = [
   {
+    id: 'crpf',
     title: 'CRPF Canteens',
     description: 'Serving the Central Reserve Police Force with quality products and dedicated service.',
     image: '/distributorcanteens/image.png',
@@ -17,6 +18,7 @@ const distributors = [
     icon: Shield,
   },
   {
+    id: 'bsf',
     title: 'BSF Canteens',
     description: 'Trusted partner for Border Security Force canteens across the region.',
     image: '/distributorcanteens/image (1).png',
@@ -25,6 +27,7 @@ const distributors = [
     icon: Shield,
   },
   {
+    id: 'cisf',
     title: 'CISF Canteens',
     description: 'Serving the Central Industrial Security Force to meet their procurement needs.',
     image: '/distributorcanteens/image (3).png',
@@ -33,6 +36,7 @@ const distributors = [
     icon: Shield,
   },
   {
+    id: 'itbp',
     title: 'ITBP Canteens',
     description: 'Serving the Indo-Tibetan Border Police with dedication and reliability.',
     image: '/distributorcanteens/download.jpeg',
@@ -41,6 +45,7 @@ const distributors = [
     icon: Shield,
   },
   {
+    id: 'ssb',
     title: 'SSB Canteens',
     description: 'Providing quality supplies to Sashastra Seema Bal units and families.',
     image: '/distributorcanteens/image (4).png',
@@ -49,6 +54,7 @@ const distributors = [
     icon: Shield,
   },
   {
+    id: 'assam',
     title: 'Assam Rifles',
     description: 'Proudly associated with the Assam Rifles, the Sentinels of the Northeast.',
     image: '/distributorcanteens/image (5).png',
@@ -57,7 +63,8 @@ const distributors = [
     icon: Shield,
   },
   {
-    title: 'State Police Canteens',
+    id: 'police',
+    title: 'State Police',
     description: 'Supplying essential goods to Police Canteens with reliability and efficiency.',
     image: '/distributorcanteens/image (2).png',
     link: '#',
@@ -66,256 +73,176 @@ const distributors = [
   },
 ];
 
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.1,
-    },
-  },
-};
+export default function AssociateBuyersSection() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.5, type: 'spring' },
-  },
-};
-
-interface Distributor {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-  category: string;
-  icon: any;
-}
-
-const DistributorCard = ({ distributor }: { distributor: Distributor }) => {
-  const Icon = distributor.icon;
-  return (
-    <motion.div
-      variants={itemVariants}
-      whileHover={{
-        y: -12,
-        transition: { duration: 0.3, ease: 'easeOut' },
-      }}
-      className="h-full group w-[300px] sm:w-[320px] md:w-[350px]"
-    >
-      <Link href={distributor.link} className="block h-full">
-        <div className="bg-gradient-to-br from-[#FEF6E6] to-[#FFF8ED] rounded-2xl overflow-hidden border-2 border-amber-200/50 h-full shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group-hover:border-amber-400/70 relative">
-          {/* Decorative corner accent */}
-          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          {/* Image container with enhanced styling */}
-          <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-50 to-white">
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="relative w-full h-full"
-            >
-              <Image
-                src={distributor.image}
-                alt={distributor.title}
-                fill
-                className="object-contain p-2 transition-all duration-700"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-              />
-            </motion.div>
-            
-            {/* Enhanced gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-amber-900/20 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Icon badge */}
-            <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-              <Icon className="w-5 h-5 text-amber-700" />
-            </div>
-          </div>
-
-          {/* Content section with improved styling */}
-          <div className="p-5 md:p-6 flex-grow flex flex-col relative z-10">
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="text-xl font-bold text-amber-900 group-hover:text-amber-950 transition-colors duration-300 pr-2">
-                {distributor.title}
-              </h3>
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileHover={{ opacity: 1, x: 0 }}
-                className="text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </motion.div>
-            </div>
-            
-            <p className="text-amber-900/70 text-sm leading-relaxed flex-grow mb-4 group-hover:text-amber-900/90 transition-colors duration-300 line-clamp-2">
-              {distributor.description}
-            </p>
-            
-            {/* Enhanced category badge */}
-            <div className="mt-auto pt-4 border-t border-amber-200/50 group-hover:border-amber-300 transition-colors duration-300">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 text-xs font-semibold rounded-full border border-amber-200/50 group-hover:from-amber-200 group-hover:to-amber-100 transition-all duration-300 shadow-sm">
-                <Users className="w-3 h-3" />
-                {distributor.category}
-              </span>
-            </div>
-          </div>
-
-          {/* Hover effect glow */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/0 to-amber-600/0 group-hover:from-amber-400/10 group-hover:to-amber-600/10 transition-all duration-500 pointer-events-none"></div>
-        </div>
-      </Link>
-    </motion.div>
-  );
-};
-
-export default function DistributorsSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-
+  // --- AUTO SCROLL LOGIC ---
   useEffect(() => {
-    const handleScroll = () => {
-      const element = document.getElementById('distributors-section');
-      if (!element) return;
-
-      const position = element.getBoundingClientRect();
-      if (position.top < window.innerHeight * 0.75) {
-        setIsVisible(true);
+    const scrollInterval = setInterval(() => {
+      if (!isPaused && carouselRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+        
+        // If we are at the end, scroll back to start, otherwise scroll right
+        // We use a tolerance of 10px to detect end of scroll
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll by the width of one card (approx 350px + gap)
+          carouselRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+        }
       }
-    };
+    }, 3000); // Scroll every 3 seconds
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on initial render
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => clearInterval(scrollInterval);
+  }, [isPaused]);
 
   return (
-    <section
-      id="distributors-section"
-      className="py-12 md:py-24 relative font-serif overflow-hidden"
-      style={{
-        backgroundColor: '#FDF3E3',
-      }}
-    >
-      {/* Decorative border */}
-      <div className="absolute inset-8 border border-amber-800/20 rounded-lg pointer-events-none"></div>
+    <section className="relative py-20 md:py-12 bg-[#FEF6E6] overflow-hidden">
+      {/* Decorative Background Patterns */}
+      <div className="absolute inset-0 z-0" 
+           style={{ 
+             backgroundImage: 'radial-gradient(#A93118 0.5px, transparent 0.5px)', 
+             backgroundSize: '24px 24px',
+             opacity: 0.05
+           }} 
+      />
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#FEF6E6] to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#FEF6E6] to-transparent z-10" />
 
-      {/* Background decorative circles */}
-      <div className="absolute left-0 bottom-0 w-96 h-96 opacity-10 pointer-events-none transform rotate-180">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="mandalaPattern2"
-              x="0"
-              y="0"
-              width="200"
-              height="200"
-              patternUnits="userSpaceOnUse"
-            >
-              <g fill="none" stroke="#8B4513" strokeWidth="0.5">
-                <circle cx="100" cy="100" r="80" />
-                <circle cx="100" cy="100" r="70" />
-                <circle cx="100" cy="100" r="60" />
-                <circle cx="100" cy="100" r="50" />
-                <path d="M 100,20 L 100,180" />
-                <path d="M 20,100 L 180,100" />
-              </g>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#mandalaPattern2)" />
-        </svg>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-8 md:mb-12">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        
+        {/* Header */}
+        <div className="text-center mb-6">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.7 }}
-            className="flex items-center justify-center gap-3 mb-4"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-[#D2722F]/10 px-4 py-1.5 rounded-full mb-6"
           >
-            <span className="h-px w-12 bg-amber-300"></span>
-            <span className="text-amber-700 uppercase tracking-[0.2em] text-xs font-semibold">Our Partners</span>
-            <span className="h-px w-12 bg-amber-300"></span>
+            <Star className="w-4 h-4 text-[#D2722F] fill-current" />
+            <span className="text-[#D2722F] text-xs font-bold tracking-widest uppercase">
+              Trusted Partners
+            </span>
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 px-2"
-            style={{ color: '#A93118', fontFamily: 'Lora, serif' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-[#3D1D07] font-serif mb-6"
           >
-            Associate Buyers
+            Serving Our Forces
           </motion.h2>
-
+          
           <motion.p
             initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base sm:text-lg text-amber-900/80 max-w-2xl mx-auto text-center px-4"
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-[#3D1D07]/70 max-w-2xl mx-auto"
           >
-            Proudly serving our esteemed clients including CRPF, BSF, and other government canteens across India
+            We are honored to supply essential goods to the brave personnel of CRPF, BSF, and government canteens across the nation.
           </motion.p>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
-          className="relative w-full overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+        {/* Carousel Container */}
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Gradient Masks for smooth fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 z-20 bg-gradient-to-r from-[#FDF3E3] to-transparent pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 z-20 bg-gradient-to-l from-[#FDF3E3] to-transparent pointer-events-none"></div>
-
+          {/* Scrollable Area */}
           <div 
-            className="flex gap-6 md:gap-8 w-max px-4 animate-marquee"
+            ref={carouselRef}
+            className="flex overflow-x-auto gap-6  px-4 -mx-4 md:px-0 md:mx-0 scrollbar-hide snap-x snap-mandatory"
             style={{ 
-              animationPlayState: isHovered ? 'running' : 'paused',
-              width: 'max-content'
+              scrollBehavior: 'smooth',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
             }}
           >
-            {/* First set of items */}
             {distributors.map((distributor, index) => (
-              <div key={`original-${distributor.title}-${index}`} className="flex-shrink-0">
+              <motion.div
+                key={distributor.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="snap-center shrink-0 w-[600px] md:w-[600px]"
+              >
                 <DistributorCard distributor={distributor} />
-              </div>
+              </motion.div>
             ))}
             
-            {/* Second set of items for seamless loop */}
-            {distributors.map((distributor, index) => (
-              <div key={`duplicate-${distributor.title}-${index}`} className="flex-shrink-0">
-                <DistributorCard distributor={distributor} />
-              </div>
-            ))}
+            {/* Spacer to allow last item to be centered */}
+            <div className="w-[10vw] shrink-0" />
           </div>
-        </motion.div>
+
+          {/* Fade Gradients for visual scrolling hints */}
+          <div className="absolute top-0 bottom-12 left-0 w-12 md:w-24 bg-gradient-to-r from-[#FEF6E6] to-transparent pointer-events-none z-10" />
+          <div className="absolute top-0 bottom-12 right-0 w-12 md:w-24 bg-gradient-to-l from-[#FEF6E6] to-transparent pointer-events-none z-10" />
+        </div>
       </div>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
-
-        .font-serif {
-          font-family: 'Lora', serif;
-        }
-        
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-      `}</style>
     </section>
+  );
+}
+
+// --- CARD COMPONENT ---
+function DistributorCard({ distributor }: { distributor: any }) {
+  const Icon = distributor.icon;
+  
+  return (
+    <Link href={distributor.link} className="block h-full group">
+      <div className="bg-white rounded-xl overflow-hidden h-full border border-[#D2722F]/10 shadow-sm hover:shadow-xl hover:shadow-[#D2722F]/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
+        
+        {/* Image Container - 16:9 Aspect Ratio */}
+        <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
+          <Image
+            src={distributor.image}
+            alt={distributor.title}
+            fill
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+          
+          {/* Floating Icon Badge */}
+          <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm p-2 rounded-lg shadow-lg text-[#983B0F] z-10">
+            <Icon className="w-5 h-5" />
+          </div>
+
+          {/* Category Tag */}
+          <div className="absolute bottom-3 left-3">
+             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D2722F] text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-md">
+               <Shield className="w-3 h-3 fill-current" />
+               {distributor.category}
+             </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-xl font-bold text-[#3D1D07] font-serif group-hover:text-[#D2722F] transition-colors">
+              {distributor.title}
+            </h3>
+            <ArrowRight className="w-5 h-5 text-[#D2722F] -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+          </div>
+          
+          <p className="text-[#3D1D07]/70 text-sm leading-relaxed line-clamp-2">
+            {distributor.description}
+          </p>
+        </div>
+
+        {/* Bottom Line Accents */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-[#FDF3E3]">
+           <div className="h-full bg-[#D2722F] w-0 group-hover:w-full transition-all duration-700 ease-out" />
+        </div>
+      </div>
+    </Link>
   );
 }

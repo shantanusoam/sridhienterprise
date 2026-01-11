@@ -108,18 +108,16 @@ export default function AboutSection() {
             <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-[#D2722F] rounded-2xl -z-10 hidden md:block" />
             
             {/* Experience Shield - Floating Badge */}
-            <div className="absolute -top-10 -left-10 md:-left-12 md:top-12 z-20 drop-shadow-xl scale-75 md:scale-100 origin-top-left">
+            {/* <div className="absolute -top-10 -left-10 md:-left-12 md:top-12 z-20 drop-shadow-xl scale-75 md:scale-100 origin-top-left">
               <ExperienceShield years={14} />
-            </div>
+            </div> */}
 
             {/* Floating Action Card */}
             <div className="absolute -bottom-8 right-4 md:-right-8 bg-white p-6 rounded-xl shadow-xl max-w-xs border-l-4 border-[#D2722F]">
                <p className="text-[#983B0F] font-bold text-lg mb-2">Join our network</p>
-               <a href="/contact">
-                  <Button className="w-full bg-[#D2722F] hover:bg-[#B55D22] text-white rounded-lg group">
-                    Contact Us <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-               </a>
+               <Button className="w-full bg-[#D2722F] hover:bg-[#B55D22] text-white rounded-lg group">
+                  Contact Us <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+               </Button>
             </div>
           </motion.div>
 
@@ -157,9 +155,9 @@ export default function AboutSection() {
                     Established in 2012, we are a trusted distributor for serving and retired personnel of CAPFs (BSF, CRPF, CISF, ITBP, SSB, Assam Rifles, RPF, IB, SPG).
                   </p>
                   <p className="mt-2 text-sm italic">
-                    Supporting the Kendriya Police Kalyan Bhandar (KPKB) network of 119 Master Bhandars and 1800+ Subsidiary Bhandars.
+                    Supporting the Kendriya Police Kalyan Bhandar (KPKB) network of 119 Master Bhandars and 2200+ Subsidiary Bhandars.
                   </p>
-                  <div className="mt-3 flex items-center gap-2">
+                  {/* <div className="mt-3 flex items-center gap-2">
                     <span className="text-xs font-semibold text-[#D2722F]">Registered officially in 2024</span>
                     <TooltipProvider>
                       <Tooltip>
@@ -171,7 +169,7 @@ export default function AboutSection() {
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
-                  </div>
+                  </div> */}
                 </div>
               </InfoCard>
 

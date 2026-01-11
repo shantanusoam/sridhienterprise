@@ -82,21 +82,21 @@ export default function CompaniesPage() {
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
                 <Package className="w-8 h-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-amber-900">{stats.totalProducts}</div>
+                <div className="text-2xl font-bold text-amber-900">250+</div>
                 <div className="text-sm text-amber-700">Total Products</div>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
                 <TrendingUp className="w-8 h-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-amber-900">{stats.totalCategories}</div>
+                <div className="text-2xl font-bold text-amber-900">50+</div>
                 <div className="text-sm text-amber-700">Categories</div>
               </div>
             </div>
             <div className="text-center">
               <div className="bg-white rounded-lg p-6 shadow-sm border border-amber-200">
                 <Users className="w-8 h-8 text-amber-600 mx-auto mb-2" />
-                <div className="text-2xl font-bold text-amber-900">100+</div>
+                <div className="text-2xl font-bold text-amber-900">1000+</div>
                 <div className="text-sm text-amber-700">Canteens Served</div>
               </div>
             </div>

@@ -62,9 +62,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <Button className="hidden md:block text-white">
-          Request a Quote
-        </Button>
+    
 
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -131,11 +129,7 @@ const Header = () => {
                 </motion.span>
               </Link>
             ))}
-            <Button
-              className="mt-4 bg-[color:var(--header-secondary)] text-white hover:bg-[color:var(--header-primary)]"
-            >
-              Request a Quote
-            </Button>
+       
           </nav>
         </motion.div>
       )}

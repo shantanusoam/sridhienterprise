@@ -90,7 +90,7 @@ const processSteps = [
     secondaryIcon: Zap,
     description: 'Our extensive distribution network ensures that products reach our clients efficiently, even in remote locations.',
     color: colors.distribution,
-    stats: { value: '28', label: 'States Covered' },
+    stats: { value: '23', label: 'States Covered' },
   },
   {
     id: 'support',
@@ -308,7 +308,7 @@ export default function OurProcess() {
       ref={containerRef}
       className="relative pb-16 md:pb-24 pt-8 overflow-hidden bg-[#FDFCF6]"
     >
-      <MandalaBackground />
+      {/* <MandalaBackground /> */}
 
       <div className="container mx-auto px-4 relative z-10">
         
