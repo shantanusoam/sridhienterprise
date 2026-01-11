@@ -77,7 +77,7 @@ const slides: Slide[] = [
     alt: 'Delivery and logistics network',
   },
   {
-    image: externalImage1,
+    image: '/destributors/image4.jpeg',
     titleLines: ['Bridging Excellence', 'to Service'],
     subtitle: "Premium Distribution Solutions for India's Protectors",
     alt: 'Wide range of distributed products',
