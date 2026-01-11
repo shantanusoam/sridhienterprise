@@ -31,8 +31,16 @@ export default function Home() {
       </div>
 
       <Hero />
-      <OurProcess />
+      
+      <AboutSection />
+      
+      <div className="relative">
+        <ProductsCategriesPage />
+      </div>
+      <DistributorsSection />
       <ServicesSection />
+      <OurProcess />
+     
 
       {/* Premium "foundation" panel for the lower half of the homepage */}
       <section className="relative bg-[#FDF3E3]">
@@ -48,14 +56,10 @@ export default function Home() {
  
       </section>
 
-      <div className="relative">
-        <ProductsCategriesPage />
-      </div>
 
-      <AboutSection />
 
       <div className="relative">
-        <DistributorsSection />
+ 
         <motion.section
           initial="hidden"
           whileInView="visible"

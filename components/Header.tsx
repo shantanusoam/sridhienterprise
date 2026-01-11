@@ -43,7 +43,7 @@ const Header = () => {
           </span>
         </Link>
 
-        <nav className="hidden md:flex bg-white space-x-6">
+        <nav className="hidden md:flex space-x-6">
           {[
             { name: 'Home', href: '/' },
             { name: 'Companies', href: '/companies' },

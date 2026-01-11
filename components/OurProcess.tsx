@@ -9,7 +9,6 @@ import {
   HeadphonesIcon, 
   Globe2, 
   ArrowRight,
-  CheckCircle2,
   Sparkles,
   Zap,
   Leaf
@@ -69,7 +68,7 @@ const processSteps = [
     secondaryIcon: Leaf,
     description: 'Our team carefully selects products that meet the specific needs of government and paramilitary canteens, ensuring quality and value for money.',
     color: colors.sourcing,
-    stats: { value: '500+', label: 'Manufacturers' },
+
   },
   {
     id: 'quality',
@@ -145,7 +144,7 @@ const InfiniteMarquee = ({ items, direction = 'left', speed = 20 }: { items: typ
                  src={d.src} 
                  alt={d.name} 
                  fill 
-                 className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                 className="object-contain filter transition-all duration-300"
                />
             </div>
           </div>
@@ -177,52 +176,66 @@ const DistributorShowcase = () => {
 
 const StepVisual = ({ step }: { step: typeof processSteps[0] }) => {
   if (step.id === 'distribution') {
-    return <DistributorShowcase />;
+    return (
+      <div className="flex flex-col h-full w-full justify-between">
+        <div className="flex-1 flex flex-col justify-center">
+           <DistributorShowcase />
+        </div>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-stone-600 text-sm font-medium text-center px-4 py-4 max-w-lg mx-auto bg-white/50 backdrop-blur-sm rounded-xl border border-stone-100/50 shadow-sm mb-4"
+        >
+          {step.description}
+        </motion.p>
+      </div>
+    );
   }
 
   const Icon = step.icon;
   const SecondaryIcon = step.secondaryIcon;
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8">
+    <div className="relative w-full h-full flex items-center justify-center p-6 md:p-8">
       {/* Dynamic Background Aura */}
       <motion.div 
-        className="absolute w-72 h-72 rounded-full mix-blend-multiply filter blur-2xl opacity-20"
+        className="absolute w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
         style={{ backgroundColor: step.color }}
         animate={{ 
           scale: [1, 1.3, 1],
           x: [0, 30, 0],
           y: [0, -30, 0],
-          opacity: [0.2, 0.3, 0.2]
+          opacity: [0.2, 0.4, 0.2]
         }}
         transition={{ duration: 6, repeat: Infinity }}
       />
       <motion.div 
-        className="absolute w-64 h-64 rounded-full mix-blend-multiply filter blur-2xl opacity-20"
+        className="absolute w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
         style={{ backgroundColor: colors.gold, right: '15%', bottom: '15%' }}
         animate={{ 
           scale: [1.3, 1, 1.3],
           x: [0, -30, 0],
           y: [0, 30, 0],
-          opacity: [0.2, 0.3, 0.2]
+          opacity: [0.2, 0.4, 0.2]
         }}
         transition={{ duration: 8, repeat: Infinity }}
       />
 
-      {/* Glass Card Container */}
+      {/* Glass Card Container - Expanded and Utilized */}
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative z-10 w-full max-w-[320px] aspect-[4/5] bg-white/30 backdrop-blur-xl rounded-3xl border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col items-center justify-center overflow-hidden group"
+        className="relative z-10 w-full max-w-md bg-white/60 backdrop-blur-xl rounded-[2rem] border border-white/80 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex flex-col items-center justify-center overflow-hidden group p-8 md:p-10"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-50" />
         
         {/* Animated Icons & Graphics */}
-        <div className="relative z-10 flex flex-col items-center gap-6">
-           <div className="relative">
+        <div className="relative z-10 flex flex-col items-center gap-6 w-full text-center">
+           <div className="relative mb-2">
               <div className="absolute inset-0 bg-white/50 rounded-full blur-xl animate-pulse" style={{ backgroundColor: `${step.color}20` }}></div>
-              <Icon size={84} color={step.color} strokeWidth={1} className="drop-shadow-sm relative z-10" />
+              <Icon size={72} color={step.color} strokeWidth={1} className="drop-shadow-sm relative z-10" />
               
               {/* Secondary decorative icon */}
               <motion.div 
@@ -231,37 +244,33 @@ const StepVisual = ({ step }: { step: typeof processSteps[0] }) => {
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.3, type: "spring" }}
               >
-                 <SecondaryIcon size={20} color={colors.gold} />
+                 <SecondaryIcon size={18} color={colors.gold} />
               </motion.div>
+           </div>
+           
+           <div className="space-y-3">
+             <h3 className="font-serif text-xl font-bold text-stone-800">{step.title}</h3>
+             <p className="text-stone-600 text-sm leading-relaxed font-medium">
+               {step.description}
+             </p>
            </div>
 
            {step.id === 'sourcing' && (
-              <div className="flex gap-2 mt-4">
+              <div className="flex gap-2 mt-2">
                  {[1,2,3].map(i => (
                    <motion.div 
                      key={i} 
-                     className="w-2 h-2 rounded-full" 
+                     className="w-1.5 h-1.5 rounded-full" 
                      style={{ backgroundColor: step.color }}
-                     animate={{ y: [0, -6, 0] }}
+                     animate={{ y: [0, -4, 0] }}
                      transition={{ delay: i * 0.15, repeat: Infinity, duration: 1.5 }}
                    />
                  ))}
               </div>
            )}
-{/* 
-           {step.id === 'quality' && (
-             <motion.div 
-               className="mt-4 px-4 py-1.5 rounded-full bg-white/60 border border-white text-xs font-bold tracking-wider uppercase text-stone-600 flex items-center gap-1"
-               initial={{ width: 0, opacity: 0 }}
-               animate={{ width: "auto", opacity: 1 }}
-               transition={{ delay: 0.5 }}
-             >
-               <CheckCircle2 size={12} className="text-green-600" /> ISO Certified
-             </motion.div>
-           )} */}
 
            {step.id === 'support' && (
-              <div className="mt-4 w-32 h-1 bg-stone-200 rounded-full overflow-hidden">
+              <div className="mt-2 w-24 h-1 bg-stone-200 rounded-full overflow-hidden">
                 <motion.div 
                   className="h-full bg-green-500"
                   animate={{ x: ["-100%", "100%"] }}
@@ -368,7 +377,7 @@ export default function OurProcess() {
         >
           
           {/* LEFT: Navigation (Desktop) & Detailed Content */}
-          <div className="w-full lg:w-5/12 p-6 md:p-10 flex flex-col relative bg-white z-20 border-b lg:border-b-0 lg:border-r border-stone-100">
+          <div className="w-full lg:w-1/2 p-6 md:p-10 flex flex-col relative bg-white z-20 border-b lg:border-b-0 lg:border-r border-stone-100">
              
              {/* Desktop Timeline Navigation */}
              <div className="hidden lg:flex flex-col space-y-1 mb-8">
@@ -422,10 +431,6 @@ export default function OurProcess() {
                       <activeStep.icon size={16} color={activeStep.color} />
                       <span>{activeStep.subtitle}</span>
                    </div>
-
-                   <p className="text-stone-600 text-base md:text-lg leading-relaxed">
-                     {activeStep.description}
-                   </p>
                    
                    {/* Stats Display */}
                    {activeStep.stats && (
@@ -456,7 +461,7 @@ export default function OurProcess() {
           </div>
 
           {/* RIGHT: Visual Stage */}
-          <div className="w-full lg:w-7/12 relative bg-stone-50 overflow-hidden min-h-[350px] md:min-h-[450px] lg:h-auto">
+          <div className="w-full lg:w-1/2 relative bg-stone-50 overflow-hidden min-h-[350px] md:min-h-[450px] lg:h-auto">
             {/* Ambient Background for Stage */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -479,13 +484,15 @@ export default function OurProcess() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStep.id}
-                className="relative w-full h-full flex items-center justify-center p-6 md:p-12"
+                className="relative w-full h-full flex flex-col items-center justify-center"
                 initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
                 transition={{ duration: 0.6, ease: "circOut" }}
               >
-                <StepVisual step={activeStep} />
+                <div className="flex-1 w-full relative min-h-0">
+                  <StepVisual step={activeStep} />
+                </div>
               </motion.div>
             </AnimatePresence>
             

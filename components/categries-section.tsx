@@ -82,8 +82,92 @@ const itemVariants = {
   },
 };
 
+interface Category {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  companyLink: string;
+  category: string;
+  brandColor: string;
+  iconSvg: JSX.Element;
+}
+
+const CategoryCard = ({ category }: { category: Category }) => (
+  <motion.div
+    variants={itemVariants}
+    whileHover={{
+      y: -8,
+      transition: { duration: 0.3 },
+    }}
+    className="h-full"
+  >
+    <div className="bg-[#FEF6E6] rounded-xl overflow-hidden border border-amber-200 h-full shadow-sm hover:shadow-lg transition-all duration-300">
+      <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden">
+        <PlaceholderImage
+          src={category.image}
+          alt={category.title}
+          width={600}
+          height={400}
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 md:hover:scale-110"
+          type="company"
+        />
+
+        {/* Decorative overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 to-transparent"></div>
+
+        {/* Category title overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <h3 className="text-2xl font-bold text-white">
+            {category.title}
+          </h3>
+        </div>
+      </div>
+
+      <div className="p-4 md:p-6">
+        <div className="flex items-start mb-4">
+          <div className="flex-shrink-0 p-2 bg-amber-100 rounded-lg border border-amber-200 mr-3 md:mr-4">
+            {category.iconSvg}
+          </div>
+          <p className="text-amber-900/80 flex-grow text-sm sm:text-base line-clamp-2">
+            {category.description}
+          </p>
+        </div>
+
+        <div className="flex space-x-2">
+          <Link href={category.link} className="flex-1">
+            <motion.div
+              className="w-full flex items-center justify-center px-4 py-2 rounded-lg text-white transition-all duration-300 text-sm"
+              style={{
+                background: `linear-gradient(90deg, ${category.brandColor} 0%, #B8520F 50%, #E18931 100%)`,
+              }}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: '0px 4px 15px rgba(183, 85, 39, 0.25)',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="mr-1">View Company</span>
+              <ArrowUpRight className="w-3 h-3" />
+            </motion.div>
+          </Link>
+          <Link
+            href={category.companyLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-2 border border-amber-300 rounded-lg text-amber-700 text-sm hover:bg-amber-50 transition-colors duration-200"
+          >
+            Website
+          </Link>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 export default function ProductsCategriesPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,7 +193,7 @@ export default function ProductsCategriesPage() {
       style={{
         backgroundColor: '#FDF3E3',
         backgroundImage:
-          "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23b88c46' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+          "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23b88c46' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E\")",
         backgroundSize: '80px',
       }}
     >
@@ -155,7 +239,7 @@ export default function ProductsCategriesPage() {
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 md:mb-8 px-2"
           style={{ color: '#A93118', fontFamily: 'Lora, serif' }}
         >
-          Our Associate Companies
+          Our Associate Companies      
         </motion.h2>
 
         <motion.p
@@ -172,81 +256,43 @@ export default function ProductsCategriesPage() {
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="relative w-full overflow-hidden"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {categories.map((category) => (
-            <motion.div
-              key={category.title}
-              variants={itemVariants}
-              whileHover={{
-                y: -8,
-                transition: { duration: 0.3 },
-              }}
-              className="h-full"
-            >
-              <div className="bg-[#FEF6E6] rounded-xl overflow-hidden border border-amber-200 h-full shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden">
-                  <PlaceholderImage
-                    src={category.image}
-                    alt={category.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 md:hover:scale-110"
-                    type="company"
-                  />
+          {/* Gradient Masks for smooth fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 z-20 bg-gradient-to-r from-[#FDF3E3] to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 z-20 bg-gradient-to-l from-[#FDF3E3] to-transparent pointer-events-none"></div>
 
-                  {/* Decorative overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 to-transparent"></div>
-
-                  {/* Category title overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-2xl font-bold text-white">
-                      {category.title}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="p-4 md:p-6">
-                  <div className="flex items-start mb-4">
-                    <div className="flex-shrink-0 p-2 bg-amber-100 rounded-lg border border-amber-200 mr-3 md:mr-4">
-                      {category.iconSvg}
-                    </div>
-                    <p className="text-amber-900/80 flex-grow text-sm sm:text-base">
-                      {category.description}
-                    </p>
-                  </div>
-
-                  <div className="flex space-x-2">
-                    <Link href={category.link} className="flex-1">
-                      <motion.div
-                        className="w-full flex items-center justify-center px-4 py-2 rounded-lg text-white transition-all duration-300 text-sm"
-                        style={{
-                          background: `linear-gradient(90deg, ${category.brandColor} 0%, #B8520F 50%, #E18931 100%)`,
-                        }}
-                        whileHover={{
-                          scale: 1.02,
-                          boxShadow: '0px 4px 15px rgba(183, 85, 39, 0.25)',
-                        }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <span className="mr-1">View Company</span>
-                        <ArrowUpRight className="w-3 h-3" />
-                      </motion.div>
-                    </Link>
-                    <Link
-                      href={category.companyLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-2 border border-amber-300 rounded-lg text-amber-700 text-sm hover:bg-amber-50 transition-colors duration-200"
-                    >
-                      Website
-                    </Link>
-                  </div>
-                </div>
+          <div 
+            className="flex gap-6 md:gap-8 w-max px-4 animate-marquee"
+            style={{ 
+              animationPlayState: isHovered ? 'running' : 'paused',
+              width: 'max-content'
+            }}
+          >
+            {/* First set of items */}
+            {categories.map((category, index) => (
+              <div 
+                key={`original-${category.title}-${index}`}
+                className="w-[280px] sm:w-[350px] md:w-[400px] flex-shrink-0"
+              >
+                <CategoryCard category={category} />
               </div>
-            </motion.div>
-          ))}
+            ))}
+            
+            {/* Second set of items for seamless loop */}
+            {categories.map((category, index) => (
+              <div 
+                key={`duplicate-${category.title}-${index}`}
+                className="w-[280px] sm:w-[350px] md:w-[400px] flex-shrink-0"
+              >
+                <CategoryCard category={category} />
+              </div>
+            ))}
+          </div>
         </motion.div>
+
       </div>
 
       {/* Import serif font */}
@@ -255,6 +301,15 @@ export default function ProductsCategriesPage() {
 
         .font-serif {
           font-family: 'Lora', serif;
+        }
+        
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
       `}</style>
     </section>

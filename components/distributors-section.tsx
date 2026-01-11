@@ -87,8 +87,95 @@ const itemVariants = {
   },
 };
 
+interface Distributor {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  category: string;
+  icon: any;
+}
+
+const DistributorCard = ({ distributor }: { distributor: Distributor }) => {
+  const Icon = distributor.icon;
+  return (
+    <motion.div
+      variants={itemVariants}
+      whileHover={{
+        y: -12,
+        transition: { duration: 0.3, ease: 'easeOut' },
+      }}
+      className="h-full group w-[300px] sm:w-[320px] md:w-[350px]"
+    >
+      <Link href={distributor.link} className="block h-full">
+        <div className="bg-gradient-to-br from-[#FEF6E6] to-[#FFF8ED] rounded-2xl overflow-hidden border-2 border-amber-200/50 h-full shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group-hover:border-amber-400/70 relative">
+          {/* Decorative corner accent */}
+          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          {/* Image container with enhanced styling */}
+          <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-50 to-white">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={distributor.image}
+                alt={distributor.title}
+                fill
+                className="object-contain p-2 transition-all duration-700"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              />
+            </motion.div>
+            
+            {/* Enhanced gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-amber-900/20 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Icon badge */}
+            <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <Icon className="w-5 h-5 text-amber-700" />
+            </div>
+          </div>
+
+          {/* Content section with improved styling */}
+          <div className="p-5 md:p-6 flex-grow flex flex-col relative z-10">
+            <div className="flex items-start justify-between mb-3">
+              <h3 className="text-xl font-bold text-amber-900 group-hover:text-amber-950 transition-colors duration-300 pr-2">
+                {distributor.title}
+              </h3>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileHover={{ opacity: 1, x: 0 }}
+                className="text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </motion.div>
+            </div>
+            
+            <p className="text-amber-900/70 text-sm leading-relaxed flex-grow mb-4 group-hover:text-amber-900/90 transition-colors duration-300 line-clamp-2">
+              {distributor.description}
+            </p>
+            
+            {/* Enhanced category badge */}
+            <div className="mt-auto pt-4 border-t border-amber-200/50 group-hover:border-amber-300 transition-colors duration-300">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 text-xs font-semibold rounded-full border border-amber-200/50 group-hover:from-amber-200 group-hover:to-amber-100 transition-all duration-300 shadow-sm">
+                <Users className="w-3 h-3" />
+                {distributor.category}
+              </span>
+            </div>
+          </div>
+
+          {/* Hover effect glow */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/0 to-amber-600/0 group-hover:from-amber-400/10 group-hover:to-amber-600/10 transition-all duration-500 pointer-events-none"></div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
+
 export default function DistributorsSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -181,85 +268,35 @@ export default function DistributorsSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
+          className="relative w-full overflow-hidden"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {distributors.map((distributor) => {
-            const Icon = distributor.icon;
-            return (
-              <motion.div
-                key={distributor.title}
-                variants={itemVariants}
-                whileHover={{
-                  y: -12,
-                  transition: { duration: 0.3, ease: 'easeOut' },
-                }}
-                className="h-full group"
-              >
-                <Link href={distributor.link} className="block h-full">
-                  <div className="bg-gradient-to-br from-[#FEF6E6] to-[#FFF8ED] rounded-2xl overflow-hidden border-2 border-amber-200/50 h-full shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group-hover:border-amber-400/70 relative">
-                    {/* Decorative corner accent */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-amber-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    {/* Image container with enhanced styling */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-50 to-white">
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
-                        className="relative w-full h-full"
-                      >
-                        <Image
-                          src={distributor.image}
-                          alt={distributor.title}
-                          fill
-                          className="object-contain p-4 transition-all duration-700"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                        />
-                      </motion.div>
-                      
-                      {/* Enhanced gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-amber-900/20 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
-                      {/* Icon badge */}
-                      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                        <Icon className="w-5 h-5 text-amber-700" />
-                      </div>
-                    </div>
+          {/* Gradient Masks for smooth fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 z-20 bg-gradient-to-r from-[#FDF3E3] to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 z-20 bg-gradient-to-l from-[#FDF3E3] to-transparent pointer-events-none"></div>
 
-                    {/* Content section with improved styling */}
-                    <div className="p-5 md:p-6 flex-grow flex flex-col relative z-10">
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-xl font-bold text-amber-900 group-hover:text-amber-950 transition-colors duration-300 pr-2">
-                          {distributor.title}
-                        </h3>
-                        <motion.div
-                          initial={{ opacity: 0, x: -10 }}
-                          whileHover={{ opacity: 1, x: 0 }}
-                          className="text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        >
-                          <ArrowRight className="w-5 h-5" />
-                        </motion.div>
-                      </div>
-                      
-                      <p className="text-amber-900/70 text-sm leading-relaxed flex-grow mb-4 group-hover:text-amber-900/90 transition-colors duration-300">
-                        {distributor.description}
-                      </p>
-                      
-                      {/* Enhanced category badge */}
-                      <div className="mt-auto pt-4 border-t border-amber-200/50 group-hover:border-amber-300 transition-colors duration-300">
-                        <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-100 to-amber-50 text-amber-800 text-xs font-semibold rounded-full border border-amber-200/50 group-hover:from-amber-200 group-hover:to-amber-100 transition-all duration-300 shadow-sm">
-                          <Users className="w-3 h-3" />
-                          {distributor.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Hover effect glow */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/0 to-amber-600/0 group-hover:from-amber-400/10 group-hover:to-amber-600/10 transition-all duration-500 pointer-events-none"></div>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+          <div 
+            className="flex gap-6 md:gap-8 w-max px-4 animate-marquee"
+            style={{ 
+              animationPlayState: isHovered ? 'running' : 'paused',
+              width: 'max-content'
+            }}
+          >
+            {/* First set of items */}
+            {distributors.map((distributor, index) => (
+              <div key={`original-${distributor.title}-${index}`} className="flex-shrink-0">
+                <DistributorCard distributor={distributor} />
+              </div>
+            ))}
+            
+            {/* Second set of items for seamless loop */}
+            {distributors.map((distributor, index) => (
+              <div key={`duplicate-${distributor.title}-${index}`} className="flex-shrink-0">
+                <DistributorCard distributor={distributor} />
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
@@ -268,6 +305,15 @@ export default function DistributorsSection() {
 
         .font-serif {
           font-family: 'Lora', serif;
+        }
+        
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
       `}</style>
     </section>

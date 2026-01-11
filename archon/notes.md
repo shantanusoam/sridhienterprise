@@ -1,14 +1,27 @@
 # Archon Implementation Notes
 
-## 2026-01-10-home-uiux
+## 2026-01-11-image-resize
 
-- Goal: elevate the homepage to a premium, cohesive, “award-winning” feel without discarding the existing warm/earthy theme.
-- Constraints: keep current palette direction; avoid large content rewrites; favor layering, typography, spacing, and motion polish.
+- Goal: Address user request to "make the image little big and all".
+- Analysis: Likely referring to either the main About section image (singular prominent image) or the Distributor logos in the carousel (plural but often referred to generically, and recently monitored).
 - Implemented:
-  - Fixed duplicate header + nested `<main>` by removing `Header` from `app/page.tsx` (layout owns global chrome).
-  - Upgraded `app/page.tsx` composition with ambient gradient “superposition”, a post-hero trust ribbon, and a premium CTA panel with proper link semantics + focus rings.
-  - Standardized font plumbing: migrated deprecated `@next/font` usage to `next/font`, fixed stray `]` in `app/layout.tsx`, and set `body` to use Tailwind `font-body`.
-  - Fixed `Header` color styling (previous Tailwind `bg-${hex}` classes were invalid) using CSS variables + Tailwind arbitrary values.
-  - Restored stable `next build` on Windows by adding `pages/_document.tsx` + minimal `pages/404.tsx`/`pages/500.tsx` to satisfy build-time checks, and fixed a `searchParams` nullability type error in `app/products/page.tsx`.
-  - Fixed hydration error caused by invalid HTML nesting in `components/about-section.tsx` (a `<div>` inside a `<p>` via `TooltipTrigger asChild`).
+  - **About Section (`components/about-section.tsx`)**: Increased the container `max-height` from `600px` to `700px`, allowing the main image slideshow to appear larger on larger screens.
+  - **Distributors Section (`components/distributors-section.tsx`)**: Reduced the padding around the logo images inside the cards from `p-4` to `p-2`. This makes the logos appear larger relative to the card size ("little big").
 
+## 2026-01-11-footer-cleanup
+
+- Goal: Clean up the `Footer.tsx` file to contain only the currently active information (Quick Links and Copyright), removing unused imports and commented-out sections.
+- Implemented:
+  - Removed unused `Input` import from `@/components/ui/input`.
+  - Removed the commented-out "Follow Us" section and SVG icons.
+  - Adjusted layout to center the "Quick Links" section using `flex justify-center` since it is the only content section remaining.
+  - Kept the border lines and copyright notice.
+
+## 2026-01-11-process-layout-tweak
+
+- Goal: Balance the layout of the `OurProcess` component by moving the description text from the left navigation panel to the right visual panel.
+- Implemented:
+  - Removed description text block from the left column in `components/OurProcess.tsx`.
+  - Added the description text block to the right column, below the `StepVisual` component.
+  - Updated the right column container to use `flex-col` to stack the visual and description vertically.
+  - Cleaned up unused imports (`CheckCircle2`).
