@@ -8,7 +8,7 @@ import Image from 'next/image';
 const stats = [
   { label: 'Years of Excellence', value: 14, suffix: '+' },
   { label: 'Satisfied Clients', value: 1570, suffix: '' },
-  { label: 'States Covered', value: 23, suffix: '' },
+  { label: 'States Covered  +3  (UT)', value: 23, suffix: '' },
 ];
 
 const services = [
@@ -180,11 +180,11 @@ export default function StatsAndServicesSection() {
                 {/* The Image - Contained properly now */}
                 <div className="relative z-10 w-full max-w-sm">
                     <Image
-                        src="/CulturalWomen.png"
-                        alt="Indian Culture Representation"
+                        src="https://upload.wikimedia.org/wikipedia/commons/b/b3/India_map_en.svg"
+                        alt="India Map"
                         width={400}
-                        height={400}
-                        className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                        height={450}
+                        className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 opacity-90"
                     />
                 </div>
             </motion.div>

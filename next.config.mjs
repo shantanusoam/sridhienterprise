@@ -17,6 +17,7 @@ const nextConfig = {
       "www.sarlamills.in",
       "www.7softindia.com",
       "cdn.shopify.com",
+      "upload.wikimedia.org",
     ],
   },
 };

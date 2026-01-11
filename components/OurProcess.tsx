@@ -90,7 +90,7 @@ const processSteps = [
     secondaryIcon: Zap,
     description: 'Our extensive distribution network ensures that products reach our clients efficiently, even in remote locations.',
     color: colors.distribution,
-    stats: { value: '23', label: 'States Covered' },
+    stats: { value: '23 +3 (UT)', label: 'States Covered' },
   },
   {
     id: 'support',
