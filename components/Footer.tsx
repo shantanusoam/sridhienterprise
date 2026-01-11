@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="border-t border-[#D2B883] my-8"></div>
         
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Quick Links section */}
           <div>
             <h3 className="text-2xl font-semibold mb-4">Quick Links</h3>
@@ -28,16 +28,6 @@ const Footer = () => {
                 )
               )}
             </nav>
-          </div>
-          
-          {/* Contact section */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Contact</h3>
-            <div className="space-y-2">
-              <p>Phone: +91 9671154102</p>
-              <p>Email: info@sridhienterprises.in</p>
-              <p>Sridhi Enterprises Pvt. Ltd.<br />Second Floor, SCO-151,<br />Omaxe City, Sector 19,<br />Sonipat, Haryana, India - 131001</p>
-            </div>
           </div>
           
           {/* Follow Us section */}

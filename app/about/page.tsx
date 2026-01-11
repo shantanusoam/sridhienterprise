@@ -49,13 +49,14 @@ export default function AboutPage() {
             At Sridhi Enterprises, we believe in building long-lasting relationships with both our suppliers and clients. Our commitment to excellence, transparency, and customer satisfaction has made us a preferred choice in the industry.
           </p>
         </div>
-        <div className="relative h-96">
+        <div className="relative h-96 rounded-lg overflow-hidden">
           <Image
-            src="/placeholder.svg?height=600&width=600"
-            alt="Sridhi Enterprises Team"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
+            src="/distributorcanteens/image (5).png"
+            alt="Sridhi Enterprises - Serving our nation's protectors"
+            fill
+            className="object-cover rounded-lg"
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </div>

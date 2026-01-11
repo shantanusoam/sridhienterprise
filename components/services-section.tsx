@@ -28,6 +28,9 @@ export default function ServicesSection() {
   return (
     <section className="bg-primary-foreground py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-900">
+          That&apos;s how we operate
+        </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div

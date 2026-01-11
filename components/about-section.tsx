@@ -15,22 +15,22 @@ import ExperienceShield from './ExperienceShield';
 
 // Images for slideshow
 const slideImages = [
-  // {
-  //   src: AboutUS,
-  //   alt: 'Product showcase 1',
-  // },
-  // {
-  //   src: HeroProducts,
-  //   alt: 'Product showcase 2',
-  // },
   {
     src: '/distributorcanteens/image (5).png',
     alt: 'Army display',
   },
-  // {
-  //   src: Hero2,
-  //   alt: 'Product display',
-  // },
+  {
+    src: '/distributorcanteens/image (1).png',
+    alt: 'Distribution center operations',
+  },
+  {
+    src: '/distributorcanteens/image (2).png',
+    alt: 'Stocked canteen shelves',
+  },
+  {
+    src: '/distributorcanteens/image (3).png',
+    alt: 'Delivery and logistics network',
+  },
 ];
 
 export default function AboutSection() {
@@ -52,28 +52,28 @@ export default function AboutSection() {
           {/* Left section with image slideshow */}
           <div className="relative">
             <div className="rounded-lg overflow-hidden relative aspect-square max-h-[600px]">
-              {/* Orange border effect */}
-              <div className="absolute inset-0 rounded-lg border-[16px] border-[#D2722F] z-10"></div>
-
               {/* Slideshow */}
               <div className="relative h-full bg-black rounded-lg">
                 {slideImages.map((image, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                    className={`absolute inset-0 transition-opacity duration-1000 z-0 ${
+                      index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0'
                     }`}
                   >
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="object-cover"
+                      className="object-cover rounded-lg"
                       priority={index === 0}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 ))}
               </div>
+              {/* Orange border effect - positioned above images */}
+              <div className="absolute inset-0 rounded-lg border-[16px] border-[#D2722F] pointer-events-none z-20"></div>
             </div>
 
             {/* Bottom panel with buttons */}
@@ -155,7 +155,7 @@ export default function AboutSection() {
       </div>
 
       {/* Experience Counter Shield */}
-      <div className="absolute right-8 bottom-8 lg:right-16 lg:bottom-10 hidden lg:block">
+      <div className="absolute right-4 top-4 lg:right-8 lg:top-8 hidden lg:block z-10">
         <ExperienceShield
           years={14} // Or calculate dynamically: new Date().getFullYear() - 2012
           // textLine1="Custom Text" // Optional: Override defaults

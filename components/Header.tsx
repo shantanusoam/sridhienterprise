@@ -47,7 +47,7 @@ const Header = () => {
           {[
             { name: 'Home', href: '/' },
             { name: 'Companies', href: '/companies' },
-            { name: 'Products', href: '/products' },
+         
             { name: 'About', href: '/about' },
             { name: 'Services', href: '/services' },
             { name: 'Contact', href: '/contact' },
@@ -115,7 +115,7 @@ const Header = () => {
             {[
               { name: 'Home', href: '/' },
               { name: 'Companies', href: '/companies' },
-              { name: 'Products', href: '/products' },
+        
               { name: 'About', href: '/about' },
               { name: 'Services', href: '/services' },
               { name: 'Contact', href: '/contact' },

@@ -69,6 +69,7 @@ const processSteps = [
     secondaryIcon: Leaf,
     description: 'Our team carefully selects products that meet the specific needs of government and paramilitary canteens, ensuring quality and value for money.',
     color: colors.sourcing,
+    stats: { value: '500+', label: 'Manufacturers' },
   },
   {
     id: 'quality',
@@ -79,6 +80,7 @@ const processSteps = [
     secondaryIcon: Sparkles,
     description: 'Every product undergoes thorough quality control processes before being distributed to our clients. We also offer custom pricing and availability as per client needs.',
     color: colors.quality,
+    stats: { value: '99.8%', label: 'Quality Rate' },
   },
   {
     id: 'distribution',
@@ -89,6 +91,7 @@ const processSteps = [
     secondaryIcon: Zap,
     description: 'Our extensive distribution network ensures that products reach our clients efficiently, even in remote locations.',
     color: colors.distribution,
+    stats: { value: '28', label: 'States Covered' },
   },
   {
     id: 'support',
@@ -99,6 +102,7 @@ const processSteps = [
     secondaryIcon: UsersIcon,
     description: 'We provide ongoing support to our clients, addressing any concerns and ensuring their continued satisfaction with our products and services.',
     color: colors.support,
+    stats: { value: '24/7', label: 'Support' },
   },
 ];
 
@@ -319,7 +323,7 @@ export default function OurProcess() {
             transition={{ delay: 0.1 }}
             className="font-serif text-3xl md:text-5xl font-bold text-stone-900 mb-6"
           >
-            The Journey of <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-orange-700 to-amber-600">Excellence</span>
+            Our Process to <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-orange-700 to-amber-600">Excellence</span>
           </motion.h2>
           
           <motion.p 
@@ -422,6 +426,20 @@ export default function OurProcess() {
                    <p className="text-stone-600 text-base md:text-lg leading-relaxed">
                      {activeStep.description}
                    </p>
+                   
+                   {/* Stats Display */}
+                   {activeStep.stats && (
+                     <div className="pt-4 pb-2">
+                       <div className="inline-flex items-center gap-3 px-4 py-2 rounded-lg border" style={{ borderColor: `${activeStep.color}40`, backgroundColor: `${activeStep.color}10` }}>
+                         <span className="text-2xl font-bold font-serif" style={{ color: activeStep.color }}>
+                           {activeStep.stats.value}
+                         </span>
+                         <span className="text-sm font-medium text-stone-600">
+                           {activeStep.stats.label}
+                         </span>
+                       </div>
+                     </div>
+                   )}
                    
                    <motion.div className="pt-4">
                      <button

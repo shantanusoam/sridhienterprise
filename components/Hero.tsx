@@ -135,37 +135,6 @@ const textLineVariants = {
   },
 };
 
-// Animated background bands for text readability on bright images
-const bandVariantsLeft = {
-  initial: { x: '-100%', opacity: 0.9 },
-  animate: {
-    x: '0%',
-    opacity: 0.9,
-    transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] },
-  },
-  exit: { x: '100%', opacity: 0.9, transition: { duration: 0.4, ease: 'easeIn' } },
-};
-
-const bandVariantsRight = {
-  initial: { x: '100%', opacity: 0.9 },
-  animate: {
-    x: '0%',
-    opacity: 0.9,
-    transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] },
-  },
-  exit: { x: '-100%', opacity: 0.9, transition: { duration: 0.4, ease: 'easeIn' } },
-};
-
-const bandVariantsTop = {
-  initial: { y: '-100%', opacity: 0.9 },
-  animate: {
-    y: '0%',
-    opacity: 0.9,
-    transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] },
-  },
-  exit: { y: '100%', opacity: 0.9, transition: { duration: 0.4, ease: 'easeIn' } },
-};
-
 const buttonVariants = {
   initial: { opacity: 0, scale: 0.9 },
   animate: {
@@ -196,9 +165,10 @@ const LogoMarquee = () => {
         >
           {/* Triplicate list for seamless loop and enough length */}
           {[...distributors, ...distributors, ...distributors].map((dist, idx) => (
-             <div 
-               key={`${dist.name}-${idx}`} 
-               className="relative h-14 w-auto  transition-all duration-500 transform hover:scale-110 flex items-center justify-center shrink-0 cursor-pointer"
+             <Link
+               key={`${dist.name}-${idx}`}
+               href="#distributors-section"
+               className="relative h-14 w-auto transition-all duration-500 transform hover:scale-110 flex items-center justify-center shrink-0 cursor-pointer"
                title={dist.name}
              >
                <Image
@@ -208,7 +178,7 @@ const LogoMarquee = () => {
                  width={140}
                  className="h-full w-auto object-contain max-w-[140px] drop-shadow-md"
                />
-             </div>
+             </Link>
           ))}
         </motion.div>
       </div>
@@ -317,42 +287,24 @@ const Hero = () => {
             exit="exit" // Although exit might not be visible with fade, good practice
             className="max-w-xl md:max-w-2xl lg:max-w-3xl pointer-events-auto" // Allow interaction with button etc.
           >
-            {/* Title Lines - Animated with Masking and Color Bands */}
+            {/* Title Lines - Animated without Background Bands */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg leading-tight">
               {currentSlideData.titleLines.map((line, lineIndex) => (
                 <span key={lineIndex} className="block overflow-hidden py-1">
                   <motion.span variants={textLineVariants} className="relative block">
-                    <motion.span
-                      className="absolute inset-0 rounded-sm md:rounded md:skew-x-[-6deg]"
-                      variants={lineIndex % 2 === 0 ? bandVariantsLeft : bandVariantsRight}
-                      style={{
-                        background:
-                          'linear-gradient(135deg, rgba(234,205,163,0.95) 0%, rgba(214,174,123,0.95) 100%)',
-                        filter: 'drop-shadow(0 6px 18px rgba(214,174,123,0.25))',
-                      }}
-                    />
-                    <span className="relative z-10 px-2 text-gray-900">{line}</span>
+                    <span className="relative z-10 px-2 text-white">{line}</span>
                   </motion.span>
                 </span>
               ))}
             </h1>
 
-            {/* Subtitle - Animated with a subtle band */}
+            {/* Subtitle - Animated without Background Band */}
             <div className="overflow-hidden">
               <motion.p
                 variants={textLineVariants}
-                className="relative text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-gray-100 drop-shadow-md font-light"
+                className="relative text-lg md:text-xl lg:text-2xl mb-8 md:mb-10 text-white drop-shadow-md font-light"
               >
-                <motion.span
-                  className="absolute inset-0 rounded-sm md:rounded opacity-90"
-                  variants={bandVariantsTop}
-                  style={{
-                    background:
-                      'linear-gradient(135deg, rgba(234,205,163,0.85) 0%, rgba(214,174,123,0.85) 100%)',
-                    filter: 'drop-shadow(0 6px 18px rgba(214,174,123,0.25))',
-                  }}
-                />
-                <span className="relative z-10 px-2 text-gray-900">{currentSlideData.subtitle}</span>
+                <span className="relative z-10 px-2 text-white">{currentSlideData.subtitle}</span>
               </motion.p>
             </div>
 
