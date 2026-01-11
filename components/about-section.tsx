@@ -107,11 +107,7 @@ export default function AboutSection() {
                   retired personnel of Central Armed Police Forces CAPFs (BSF,
                   CRPF, CISF, ITBP, SSB, Assam Rifles, RPF, IB, SPG and All State
                   Police Organizations).
-                  <br /> The ministry of Home Affairs has setup the Kendriya
-                  Police kalyan bhandar that came into existence in 2006. As of
-                  now there are 119 Master Bhandar which act as distribution
-                  centers and 2200 subsidiary canteens across India, serving
-                  families across the country.
+                  <br /> In 2006, the Ministry of Home Affairs introduced the Kendriya Police Kalyan Bhandar (KPKB) as a means of supporting welfare initiatives. This system caters to both active and retired members of CAPFs, CPOs, and State Police Forces, along with their families throughout India. Over time, KPKB has flourished, boasting 119 Master Bhandars serving as warehouses and over 1800 Subsidiary Bhandars functioning as retail outlets.
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <button
