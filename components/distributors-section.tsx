@@ -143,7 +143,7 @@ export default function AssociateBuyersSection() {
             transition={{ delay: 0.2 }}
             className="text-lg text-[#3D1D07]/70 max-w-2xl mx-auto"
           >
-            We are honored to supply essential goods to the brave personnel of CRPF, BSF, and government canteens across the nation.
+            We are honored to supply essential goods to the brave personnel of CAPF's and government canteens across the nation.
           </motion.p>
         </div>
 
