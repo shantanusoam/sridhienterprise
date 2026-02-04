@@ -255,7 +255,7 @@ const StepVisual = ({ step }: { step: typeof processSteps[0] }) => {
              </p>
            </div>
 
-           {step.id === 'sourcing' && (
+           {/* {step.id === 'sourcing' && (
               <div className="flex gap-2 mt-2">
                  {[1,2,3].map(i => (
                    <motion.div 
@@ -267,7 +267,7 @@ const StepVisual = ({ step }: { step: typeof processSteps[0] }) => {
                    />
                  ))}
               </div>
-           )}
+           )} */}
 
            {step.id === 'support' && (
               <div className="mt-2 w-24 h-1 bg-stone-200 rounded-full overflow-hidden">
@@ -314,7 +314,7 @@ export default function OurProcess() {
         
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -323,7 +323,7 @@ export default function OurProcess() {
             <span className="h-px w-8 bg-stone-300"></span>
             <span className="text-stone-500 uppercase tracking-[0.2em] text-xs font-semibold">How We Operate</span>
             <span className="h-px w-8 bg-stone-300"></span>
-          </motion.div>
+          </motion.div> */}
           
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

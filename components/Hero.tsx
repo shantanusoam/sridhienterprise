@@ -82,31 +82,31 @@ const slides: Slide[] = [
     subtitle: "Premium Distribution Solutions for India's Protectors",
     alt: 'Wide range of distributed products',
   },
-  {
-    image: externalImage2,
-    titleLines: ['Quality Without', 'Compromise'],
-    subtitle: 'Serving Those Who Serve Our Nation',
-    alt: 'Close-up of quality food products',
-  },
-  {
-    image: externalImage3, // Use imported image
-    titleLines: ['Quality Without', 'Compromise'],
-    subtitle: 'Reaching Every Corner with Precision and Care',
-    alt: 'Sridhi Enterprises product variety',
-  },
-  {
-    image: externalImage4,
-    titleLines: ['Quality Without', 'Compromise'],
-    subtitle: 'Serving Those Who Serve Our Nation',
-    alt: 'Close-up of quality food products',
-  },
-  {
-    image: externalImage5,
-    titleLines: ['Pan-India', 'Distribution'],
+  // {
+  //   image: externalImage2,
+  //   titleLines: ['Quality Without', 'Compromise'],
+  //   subtitle: 'Serving Those Who Serve Our Nation',
+  //   alt: 'Close-up of quality food products',
+  // },
+  // {
+  //   image: externalImage3, // Use imported image
+  //   titleLines: ['Quality Without', 'Compromise'],
+  //   subtitle: 'Reaching Every Corner with Precision and Care',
+  //   alt: 'Sridhi Enterprises product variety',
+  // },
+  // {
+  //   image: externalImage4,
+  //   titleLines: ['Quality Without', 'Compromise'],
+  //   subtitle: 'Serving Those Who Serve Our Nation',
+  //   alt: 'Close-up of quality food products',
+  // },
+  // {
+  //   image: externalImage5,
+  //   titleLines: ['Pan-India', 'Distribution'],
 
-    subtitle: 'Serving Those Who Serve Our Nation',
-    alt: 'Close-up of quality food products',
-  },
+  //   subtitle: 'Serving Those Who Serve Our Nation',
+  //   alt: 'Close-up of quality food products',
+  // },
 
 ];
 

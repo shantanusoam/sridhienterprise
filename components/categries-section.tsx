@@ -208,11 +208,11 @@ function CompanyCard({ company }: { company: CarouselCompany }) {
          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
          {/* Floating Badge (Icon) */}
-         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-lg border border-white/20 text-[#A93118]">
+         {/* <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md p-2 rounded-xl shadow-lg border border-white/20 text-[#A93118]">
             <div className="w-8 h-8">
                 {company.iconSvg}
             </div>
-         </div>
+         </div> */}
          
          {/* Category Tag */}
          <div className="absolute top-4 right-4 bg-[#D2722F] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">

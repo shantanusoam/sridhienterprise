@@ -82,14 +82,17 @@ export default function AssociateBuyersSection() {
     const scrollInterval = setInterval(() => {
       if (!isPaused && carouselRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+        const firstCard = carouselRef.current.firstElementChild as HTMLElement;
+        const cardWidth = firstCard ? firstCard.clientWidth : 0;
+        const gap = 24; // gap-6 is 24px
         
         // If we are at the end, scroll back to start, otherwise scroll right
         // We use a tolerance of 10px to detect end of scroll
         if (scrollLeft + clientWidth >= scrollWidth - 10) {
           carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          // Scroll by the width of one card (approx 350px + gap)
-          carouselRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+          // Scroll by the width of one card + gap
+          carouselRef.current.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
         }
       }
     }, 3000); // Scroll every 3 seconds
@@ -98,7 +101,7 @@ export default function AssociateBuyersSection() {
   }, [isPaused]);
 
   return (
-    <section className="relative py-20 md:py-12 bg-[#FEF6E6] overflow-hidden">
+    <section className="relative py-12 md:py-20 bg-[#FEF6E6] overflow-hidden">
       {/* Decorative Background Patterns */}
       <div className="absolute inset-0 z-0" 
            style={{ 
@@ -131,7 +134,7 @@ export default function AssociateBuyersSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-[#3D1D07] font-serif mb-6"
+            className="text-3xl md:text-5xl font-bold text-[#3D1D07] font-serif mb-6"
           >
             Serving Our Forces
           </motion.h2>
@@ -170,7 +173,7 @@ export default function AssociateBuyersSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="snap-center shrink-0 w-[600px] md:w-[600px]"
+                className="snap-center shrink-0 w-[85vw] md:w-[600px]"
               >
                 <DistributorCard distributor={distributor} />
               </motion.div>
@@ -181,8 +184,8 @@ export default function AssociateBuyersSection() {
           </div>
 
           {/* Fade Gradients for visual scrolling hints */}
-          <div className="absolute top-0 bottom-12 left-0 w-12 md:w-24 bg-gradient-to-r from-[#FEF6E6] to-transparent pointer-events-none z-10" />
-          <div className="absolute top-0 bottom-12 right-0 w-12 md:w-24 bg-gradient-to-l from-[#FEF6E6] to-transparent pointer-events-none z-10" />
+          <div className="absolute top-0 bottom-12 left-0 w-12 hidden md:block md:w-24 bg-gradient-to-r from-[#FEF6E6] to-transparent pointer-events-none z-10" />
+          <div className="absolute top-0 bottom-12 right-0 w-12 hidden md:block md:w-24 bg-gradient-to-l from-[#FEF6E6] to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>

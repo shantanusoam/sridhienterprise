@@ -60,9 +60,8 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const springValue = useSpring(motionValue, {
     damping: 30,
     stiffness: 100,
-    duration: 2,
   });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   useEffect(() => {
     if (isInView) {
@@ -73,12 +72,12 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   useEffect(() => {
     return springValue.on("change", (latest) => {
       if (ref.current) {
-        ref.current.textContent = Math.floor(latest).toLocaleString() + suffix;
+        ref.current.textContent = Math.round(latest).toLocaleString() + suffix;
       }
     });
   }, [springValue, suffix]);
 
-  return <span ref={ref} />;
+  return <span ref={ref}>0{suffix}</span>;
 }
 
 
@@ -121,19 +120,19 @@ export default function StatsAndServicesSection() {
                 </p>
                 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     {stats.slice(0, 2).map((stat, idx) => (
-                        <div key={idx} className="bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-[#D2722F]/10 shadow-sm">
-                            <h3 className="text-4xl font-bold text-[#983B0F] mb-1 font-serif">
+                        <div key={idx} className="bg-white/50 backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-[#D2722F]/10 shadow-sm">
+                            <h3 className="text-3xl md:text-4xl font-bold text-[#983B0F] mb-1 font-serif">
                                 <Counter value={stat.value} suffix={stat.suffix} />
                             </h3>
                             <p className="text-sm font-semibold text-[#3D1D07]/80">{stat.label}</p>
                         </div>
                     ))}
                     {/* Full width stat */}
-                    <div className="col-span-2 bg-[#D2722F] text-white p-6 rounded-2xl shadow-lg shadow-[#D2722F]/20 flex items-center justify-between">
+                    <div className="col-span-1 sm:col-span-2 bg-[#D2722F] text-white p-4 md:p-6 rounded-2xl shadow-lg shadow-[#D2722F]/20 flex items-center justify-between gap-4">
                          <div>
-                            <h3 className="text-4xl font-bold mb-1 font-serif">
+                            <h3 className="text-3xl md:text-4xl font-bold mb-1 font-serif">
                                 <Counter value={stats[2].value} suffix={stats[2].suffix} />
                             </h3>
                             <p className="text-sm font-semibold opacity-90">{stats[2].label}</p>
@@ -180,7 +179,7 @@ export default function StatsAndServicesSection() {
                 {/* The Image - Contained properly now */}
                 <div className="relative z-10 w-full max-w-sm">
                     <Image
-                        src="https://upload.wikimedia.org/wikipedia/commons/b/b3/India_map_en.svg"
+                        src="/india-map.svg"
                         alt="India Map"
                         width={400}
                         height={450}
