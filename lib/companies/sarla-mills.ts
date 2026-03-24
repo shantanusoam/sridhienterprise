@@ -5,7 +5,7 @@ export const sarlaMills: Company = {
   name: 'Sarla Mills',
   slug: 'sarla-mills',
   description: 'Premium textile products known for their durability and comfort. Specializing in high-quality blankets and textile solutions for institutional and retail customers.',
-  website: 'https://www.sarlamills.in/',
+  website: '',
   logo: 'https://www.sarlamills.in/cdn/shop/files/Sarla_Mills_Logo.png',
   coverImage: 'https://cdn.shopify.com/s/files/1/0683/0712/4528/files/Product-1.webp?v=1672294968',
   category: 'Textiles & Fabric Products',
@@ -16,7 +16,7 @@ export const sarlaMills: Company = {
   },
   contact: {
     email: 'info@sarlamills.in',
-    website: 'https://www.sarlamills.in/'
+    website: ''
   },
   specialties: [
     'Premium Blankets',

@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { getCompanyBySlug, Company, Product } from '@/lib/companies';
 import { Button } from '@/components/ui/button';
+import { WHATSAPP_LINK } from '@/lib/constants';
 import { Badge } from '@/components/ui/badge';
 import PlaceholderImage from '@/components/ui/placeholder-image';
 
@@ -96,7 +97,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
                 alt={`${company.name} cover`}
                 fill
                 sizes="100vw"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'fill' }}
                 className="transition-transform duration-700 group-hover:scale-105"
                 type="company"
               />
@@ -395,7 +396,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
                 <p className="text-sm text-muted-foreground mb-4">
                   Contact us directly for bulk orders from {company.name} at special rates.
                 </p>
-                <Link href="/contact">
+                <Link href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                   <Button variant="secondary" size="sm" className="w-full text-secondary-foreground">
                     Contact Sales
                   </Button>

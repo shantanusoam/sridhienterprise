@@ -11,6 +11,7 @@ import DistributorsSection from '@/components/distributors-section';
 
 import OurProcess from '@/components/OurProcess';
 import StatsAndServicesSection from '@/components/StatsandServiceSection';
+import { WHATSAPP_LINK } from '@/lib/constants';
 
 // Animation variants
 const fadeIn = {
@@ -107,7 +108,9 @@ export default function Home() {
                   className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
                 >
                   <Link
-                    href="/contact?type=partner"
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor-interactable
                     className="inline-flex items-center justify-center rounded-xl px-7 py-3 text-base font-semibold text-white shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E18931] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDF3E3] hover:shadow-lg"
                     style={{
@@ -119,7 +122,9 @@ export default function Home() {
                   </Link>
 
                   <Link
-                    href="/contact?type=supply"
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor-interactable
                     className="inline-flex items-center justify-center rounded-xl border border-amber-900/20 bg-white/60 px-7 py-3 text-base font-semibold text-amber-950/80 backdrop-blur transition-colors hover:bg-white/75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E18931] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDF3E3]"
                   >

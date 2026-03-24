@@ -37,7 +37,7 @@ const distributors = [
 
 // Assuming other images might be external URLs or imported similarly
 const externalImage1 =
-  'https://www.sarlamills.in/cdn/shop/files/Group-2.webp?v=1672291195';
+  'cdn/shop/files/Group-2.webp?v=1672291195';
 const externalImage2 = 'https://cdn.shopify.com/s/files/1/0268/9577/7903/files/1_6.jpg?v=1743142253';
 const externalImage3 = 'https://bhikharamchandmal.in/pub/media/catalog/1270x185px-Product-Page-Banner_01.jpg'; // Using placeholders
 const externalImage4 = 'https://cdn.shopify.com/s/files/1/2402/9599/files/oil-Banner.png?v=1748498078';

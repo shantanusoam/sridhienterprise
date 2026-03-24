@@ -84,7 +84,7 @@ This document outlines a comprehensive plan to reorganize the Sridhi Enterprises
 
 #### 4. **Sarla Mills**
 - **Category**: Textiles & Fabric Products
-- **Website**: https://www.sarlamills.in/
+- **Website**: 
 - **Products**:
   - Premium Blankets
   - Textile Products

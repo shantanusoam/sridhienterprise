@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { WHATSAPP_LINK } from "@/lib/constants";
 
 const Footer = () => {
   return (
@@ -15,17 +16,20 @@ const Footer = () => {
           <div className="text-center">
             <h3 className="text-2xl font-semibold mb-4">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
-              {["Home", "About", "Products", "Services", "Contact"].map(
-                (item) => (
+              {["Home", "About", "Products", "Services", "Contact"].map((item) => {
+                const isContact = item === "Contact";
+                return (
                   <Link
                     key={item}
-                    href={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                    href={isContact ? WHATSAPP_LINK : `/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                    target={isContact ? "_blank" : undefined}
+                    rel={isContact ? "noopener noreferrer" : undefined}
                     className="text-black hover:text-[#D2B883] transition-colors"
                   >
                     {item}
                   </Link>
-                )
-              )}
+                );
+              })}
             </nav>
           </div>
         </div>

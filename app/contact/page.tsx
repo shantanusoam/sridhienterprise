@@ -66,7 +66,7 @@ export default function ContactPage() {
               Sonipat, Haryana, India - 131001
             </p>
             <p className={`mb-2 text-${COLORS.text}`}>
-              <strong>Phone:</strong> +91 9671154102
+              <strong>Phone:</strong> +91 9215041117
             </p>
             <p className={`mb-2 text-${COLORS.text}`}>
               <strong>Email:</strong> info@sridhienterprises.in

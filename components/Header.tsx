@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { COLORS } from '@/lib/constants';
+import { COLORS, WHATSAPP_LINK } from '@/lib/constants';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,11 +49,13 @@ const Header = () => {
          
             { name: 'About', href: '/about' },
             { name: 'Services', href: '/services' },
-            { name: 'Contact', href: '/contact' },
+            { name: 'Contact', href: WHATSAPP_LINK, external: true },
           ].map((item) => (
             <Link
               key={item.name}
               href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
               className="text-[color:var(--header-text)] transition-colors hover:text-[color:var(--header-secondary)]"
             >
               <motion.span whileHover={{ scale: 1.1 }}>{item.name}</motion.span>
@@ -116,11 +117,13 @@ const Header = () => {
         
               { name: 'About', href: '/about' },
               { name: 'Services', href: '/services' },
-              { name: 'Contact', href: '/contact' },
+              { name: 'Contact', href: WHATSAPP_LINK, external: true },
             ].map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
                 className="block py-2 text-[color:var(--header-text)] transition-colors hover:text-[color:var(--header-secondary)]"
                 onClick={() => setIsOpen(false)}
               >
