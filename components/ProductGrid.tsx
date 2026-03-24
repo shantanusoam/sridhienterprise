@@ -77,12 +77,12 @@ const ProductGrid = ({ filters }: ProductGridProps) => {
       </div>
       
       {/* Debug info */}
-      <div className="mt-4 p-4 bg-gray-100 rounded-lg text-sm">
+      {/* <div className="mt-4 p-4 bg-gray-100 rounded-lg text-sm">
         <p><strong>Debug Info:</strong></p>
         <p>Total Products: {products.length}</p>
         <p>Showing: {products.length} products (all products, no pagination)</p>
         <p>Filters: {JSON.stringify(filters)}</p>
-      </div>
+      </div> */}
     </div>
   );
 };

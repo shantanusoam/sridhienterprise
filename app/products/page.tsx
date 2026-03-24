@@ -18,7 +18,10 @@ function ProductsContent() {
     const companyParam = searchParams?.get('company');
     if (companyParam) {
       setFilters({ companies: [companyParam] });
+      return;
     }
+    // Reset to full product list when no company query exists.
+    setFilters({});
   }, [searchParams]);
 
   const handleFilterChange = (newFilters: ProductFilterType) => {

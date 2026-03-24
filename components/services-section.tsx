@@ -8,7 +8,7 @@ const services = [
     icon: Truck,
     title: 'Quality Services',
     description:
-      'Providing only the best products that meet the highest standards.. We encourage our colleagues to commit themselves to provide customer care, adopt to vibrant technology to maintain our top position in the field.',
+      'Providing only the best products that meet the highest standards. We encourage our colleagues to commit themselves to provide customer care, adopt to vibrant technology to maintain our top position in the field.',
   },
   {
     icon: Lightbulb,

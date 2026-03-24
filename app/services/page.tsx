@@ -84,7 +84,7 @@ export default function ServicesPage() {
                   <li key={i} className={`text-${COLORS.text} mb-2`}>{detail}</li>
                 ))}
               </ul>
-              <Button>Learn More</Button>
+              {/* <Button>Learn More</Button> */}
             </CardContent>
           </Card>
         ))}

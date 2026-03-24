@@ -112,8 +112,11 @@ export default function StatsAndServicesSection() {
                 <span className="text-[#D2722F] font-bold tracking-wider uppercase text-sm mb-4 block">
                     Proven Excellence
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#3D1D07] font-serif mb-6 leading-tight">
-                    Why Choose <br/> Sridhi Enterprises?
+                <h2 className="text-4xl md:text-5xl font-bold text-[#3D1D07] font-serif mb-6 leading-relaxed">
+                    Why Choose
+                    <span className="inline-block w-3 md:w-5" /> {/* adds horizontal space */}
+                    <br className="hidden md:block" />
+                    <span className="inline-block" style={{ marginLeft: '2px' }}>Sridhi Enterprises?</span>
                 </h2>
                 <p className="text-lg text-[#3D1D07]/70 leading-relaxed mb-8">
                     With over a decade of experience, we have built a reputation for reliability, quality, and consistency in the distribution sector.

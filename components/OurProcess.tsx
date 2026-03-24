@@ -446,7 +446,7 @@ export default function OurProcess() {
                      </div>
                    )}
                    
-                   <motion.div className="pt-4">
+                   {/* <motion.div className="pt-4">
                      <button
                        className="group flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all"
                        style={{ color: activeStep.color }}
@@ -454,7 +454,7 @@ export default function OurProcess() {
                        <span className="border-b border-transparent group-hover:border-current transition-all pb-0.5">Learn More</span> 
                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                      </button>
-                   </motion.div>
+                   </motion.div> */}
                  </motion.div>
                </AnimatePresence>
              </div>
