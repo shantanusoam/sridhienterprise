@@ -15,7 +15,7 @@ import {
   ShoppingBag,
   CheckCircle2
 } from 'lucide-react';
-import { getCompanyBySlug, Company, Product } from '@/lib/companies';
+import { getCompanyBySlug, Company } from '@/lib/companies';
 import { Button } from '@/components/ui/button';
 import { WHATSAPP_LINK } from '@/lib/constants';
 import { Badge } from '@/components/ui/badge';
