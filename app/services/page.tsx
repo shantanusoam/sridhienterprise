@@ -10,8 +10,8 @@ import {
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: 'Our Services | Sridhi Enterprises',
-  description: 'Explore the range of services offered by Sridhi Enterprises for government and paramilitary canteens.',
+  title: 'Our Services | Sridhi Enterprises pvt ltd',
+  description: 'Explore the range of services offered by Sridhi Enterprises pvt ltd for government and paramilitary canteens.',
 }
 
 const services = [
@@ -66,7 +66,7 @@ export default function ServicesPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className={`text-4xl font-bold mb-8 text-${COLORS.primary}`}>Our Services</h1>
       <p className={`text-lg mb-8 text-${COLORS.text}`}>
-        At Sridhi Enterprises, we pride ourselves on offering comprehensive services tailored to meet the unique needs of government and paramilitary canteens. Our commitment to excellence ensures that we deliver not just products, but complete solutions.
+        At Sridhi Enterprises pvt ltd, we pride ourselves on offering comprehensive services tailored to meet the unique needs of government and paramilitary canteens. Our commitment to excellence ensures that we deliver not just products, but complete solutions.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {services.map((service, index) => (

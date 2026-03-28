@@ -9,25 +9,25 @@ import {
 } from "@/components/ui/accordion"
 
 export const metadata: Metadata = {
-  title: 'About Us | Sridhi Enterprises',
-  description: 'Learn about Sridhi Enterprises, our history, mission, and commitment to serving government and paramilitary canteens.',
+  title: 'About Us | Sridhi Enterprises pvt ltd',
+  description: 'Learn about Sridhi Enterprises pvt ltd, our history, mission, and commitment to serving government and paramilitary canteens.',
 }
 
 const faqItems = [
   {
-    question: "What sets Sridhi Enterprises apart from other distributors?",
+    question: "What sets Sridhi Enterprises pvt ltd apart from other distributors?",
     answer: "Our focus on government and paramilitary canteens, extensive distribution network, and commitment to quality make us unique in the industry."
   },
   {
-    question: "How does Sridhi Enterprises ensure product quality?",
+    question: "How does Sridhi Enterprises pvt ltd ensure product quality?",
     answer: "We have a rigorous supplier vetting process, conduct regular quality audits, and ensure compliance with industry standards for all our products."
   },
   {
-    question: "Can Sridhi Enterprises handle large-scale orders?",
+    question: "Can Sridhi Enterprises pvt ltd handle large-scale orders?",
     answer: "Absolutely. Our robust infrastructure and efficient inventory management system allow us to handle orders of any scale with ease."
   },
   {
-    question: "What is Sridhi Enterprises' approach to customer service?",
+    question: "What is Sridhi Enterprises pvt ltd' approach to customer service?",
     answer: "We believe in building long-term relationships with our clients. Our dedicated customer service team is always ready to assist with any queries or concerns."
   }
 ]
@@ -35,24 +35,24 @@ const faqItems = [
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className={`text-4xl font-bold mb-8 text-${COLORS.primary}`}>About Sridhi Enterprises</h1>
+      <h1 className={`text-4xl font-bold mb-8 text-${COLORS.primary}`}>About Sridhi Enterprises pvt ltd</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
         <div>
           <p className={`mb-4 text-${COLORS.text}`}>
-            Sridhi Enterprises is a leading distributor connecting quality manufacturers to government services. With over two decades of experience, we have established ourselves as a trusted partner for paramilitary and government canteens across India.
+            Sridhi Enterprises pvt ltd is a leading distributor connecting quality manufacturers to government services. With over two decades of experience, we have established ourselves as a trusted partner for paramilitary and government canteens across India.
           </p>
           <p className={`mb-4 text-${COLORS.text}`}>
             Our mission is to ensure the highest quality products reach our esteemed clients, maintaining the utmost standards of trust and efficiency in our services. We take pride in our extensive network of suppliers and our ability to deliver products that meet the unique needs of government institutions.
           </p>
           <p className={`mb-4 text-${COLORS.text}`}>
-            At Sridhi Enterprises, we believe in building long-lasting relationships with both our suppliers and clients. Our commitment to excellence, transparency, and customer satisfaction has made us a preferred choice in the industry.
+            At Sridhi Enterprises pvt ltd, we believe in building long-lasting relationships with both our suppliers and clients. Our commitment to excellence, transparency, and customer satisfaction has made us a preferred choice in the industry.
           </p>
         </div>
         <div className="relative h-96 rounded-lg overflow-hidden">
           <Image
             src="/distributorcanteens/image (5).png"
-            alt="Sridhi Enterprises - Serving our nation's protectors"
+            alt="Sridhi Enterprises pvt ltd - Serving our nation's protectors"
             fill
             className="object-cover rounded-lg"
             priority

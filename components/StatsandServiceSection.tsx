@@ -116,7 +116,7 @@ export default function StatsAndServicesSection() {
                     Why Choose
                     <span className="inline-block w-3 md:w-5" /> {/* adds horizontal space */}
                     <br className="hidden md:block" />
-                    <span className="inline-block" style={{ marginLeft: '2px' }}>Sridhi Enterprises?</span>
+                    <span className="inline-block" style={{ marginLeft: '2px' }}>Sridhi Enterprises pvt ltd?</span>
                 </h2>
                 <p className="text-lg text-[#3D1D07]/70 leading-relaxed mb-8">
                     With over a decade of experience, we have built a reputation for reliability, quality, and consistency in the distribution sector.

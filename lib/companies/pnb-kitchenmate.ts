@@ -7,7 +7,7 @@ export const pnbKitchenmate: Company = {
   description: 'High-quality kitchenware designed to make cooking efficient and enjoyable. Specializing in triply stainless steel cookware, non-stick solutions, and innovative kitchen appliances.',
   website: 'https://www.pnbkitchenmate.com/',
   logo: 'https://www.pnbkitchenmate.com/cdn/shop/files/PNB_Kitchenmate_Logo.png',
-  coverImage: 'https://www.pnbkitchenmate.com/cdn/shop/files/SmartIdlyCooker.jpg?v=1754656638&width=1946',
+  coverImage: '/images/PNB Website image .png',
   category: 'Kitchenware & Cooking Equipment',
   brandColors: {
     primary: '#A93118',

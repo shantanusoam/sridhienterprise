@@ -76,12 +76,7 @@ const slides: Slide[] = [
     subtitle: 'Connecting Premium Brands to Remote Canteens',
     alt: 'Delivery and logistics network',
   },
-  {
-    image: '/destributors/image4.jpeg',
-    titleLines: ['Bridging Excellence', 'to Service'],
-    subtitle: "Premium Distribution Solutions for India's Protectors",
-    alt: 'Wide range of distributed products',
-  },
+
   // {
   //   image: externalImage2,
   //   titleLines: ['Quality Without', 'Compromise'],
@@ -92,7 +87,7 @@ const slides: Slide[] = [
   //   image: externalImage3, // Use imported image
   //   titleLines: ['Quality Without', 'Compromise'],
   //   subtitle: 'Reaching Every Corner with Precision and Care',
-  //   alt: 'Sridhi Enterprises product variety',
+  //   alt: 'Sridhi Enterprises pvt ltd product variety',
   // },
   // {
   //   image: externalImage4,

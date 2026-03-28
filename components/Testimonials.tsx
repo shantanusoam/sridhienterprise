@@ -8,21 +8,21 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    text: 'Sridhi Enterprises has consistently delivered high-quality products to our canteen. Their reliability is unmatched.',
+    text: 'Sridhi Enterprises pvt ltd has consistently delivered high-quality products to our canteen. Their reliability is unmatched.',
     author: 'Maj. Rajesh Kumar',
     position: 'Army Canteen Services',
     initial: 'M',
   },
   {
     id: 2,
-    text: "We've been impressed with the efficiency and professionalism of Sridhi Enterprises. They're a trusted partner in our operations.",
+    text: "We've been impressed with the efficiency and professionalism of Sridhi Enterprises pvt ltd. They're a trusted partner in our operations.",
     author: 'Capt. Priya Singh',
     position: 'BSF Logistics Department',
     initial: 'P',
   },
   {
     id: 3,
-    text: 'The range of products and the quality of service provided by Sridhi Enterprises have exceeded our expectations.',
+    text: 'The range of products and the quality of service provided by Sridhi Enterprises pvt ltd have exceeded our expectations.',
     author: 'Subedar Vikram Thapa',
     position: 'CRPF Mess Committee',
     initial: 'V',

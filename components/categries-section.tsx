@@ -200,7 +200,7 @@ function CompanyCard({ company }: { company: CarouselCompany }) {
             // Use layout fill or specific dimensions
             width={600} 
             height={338} // 16:9 ratio of 600
-            className="w-full h-full object-fit transition-transform duration-700 ease-out group-hover:scale-110"
+            className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110"
             type="company"
          />
          

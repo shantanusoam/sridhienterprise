@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sridhi Enterprises - Premium Distribution for India's Protectors",
+  title: "Sridhi Enterprises pvt ltd - Premium Distribution for India's Protectors",
   description:
-    "Sridhi Enterprises is a leading distributor connecting quality manufacturers to government and paramilitary canteens across India.",
+    "Sridhi Enterprises pvt ltd is a leading distributor connecting quality manufacturers to government and paramilitary canteens across India.",
   keywords: "distribution, government canteens, paramilitary canteens, quality products, India",
-  authors: [{ name: "Sridhi Enterprises" }],
+  authors: [{ name: "Sridhi Enterprises pvt ltd" }],
 };

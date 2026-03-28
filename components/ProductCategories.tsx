@@ -12,7 +12,7 @@ const categories = [
     title: 'Kitchenware',
     description: 'High-quality kitchenware from PNB Kitchenmate',
     // --- Replace with your actual image path ---
-    image: '/images/ ', // Example path
+    image: '/images/PNB Website image .png ', // Example path
     iconSvg: (
       <svg
         width="24"
@@ -44,7 +44,7 @@ const categories = [
     title: 'Snacks & Sweets',
     description: 'Delicious treats from Bhikharam Chandmal',
     // --- Replace with your actual image path ---
-    image: '/images/snacks-category.jpg', // Example path
+    image: '/images/Gemini_Generated_Image_3g2t83g2t83g2t83.png', // Example path
     iconSvg: (
       <svg
         width="24"

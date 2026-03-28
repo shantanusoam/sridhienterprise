@@ -91,7 +91,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
             className="bg-card rounded-3xl shadow-xl overflow-hidden border border-border/50 relative group"
           >
             {/* Cover Image Banner (Separate from content) */}
-            <div className="relative h-48 sm:h-56 md:h-64 lg:h-80 w-full bg-muted">
+            <div className="relative h-48 sm:h-[500px] md:h-[550px] lg:h-[600px] w-full bg-muted">
               <PlaceholderImage
                 src={company.coverImage}
                 alt={`${company.name} cover`}
@@ -115,7 +115,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
                         src={company.logo}
                         alt={`${company.name} logo`}
                         fill
-                        sizes="(max-width: 768px) 96px, 128px"
+                        sizes="(max-width: 768px) 96px, 192px"
                         style={{ objectFit: 'contain' }}
                         className="p-1"
                         type="company"

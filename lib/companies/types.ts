@@ -1,4 +1,4 @@
-// Company and Product Type Definitions for Sridhi Enterprises
+// Company and Product Type Definitions for Sridhi Enterprises pvt ltd
 
 export interface Company {
   id: string;
