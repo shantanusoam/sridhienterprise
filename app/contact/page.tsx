@@ -9,8 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 // import { useToast } from "@/components/ui/use-toast";
 
 // export const metadata: Metadata = {
-//   title: 'Contact Us | Sridhi Enterprises Pvt ltd',
-//   description: 'Get in touch with Sridhi Enterprises Pvt ltd for any queries or support.',
+//   title: 'Contact Us | Sridhi Enterprises Pvt Ltd',
+//   description: 'Get in touch with Sridhi Enterprises Pvt Ltd for any queries or support.',
 // }
 
 export default function ContactPage() {
@@ -61,7 +61,7 @@ export default function ContactPage() {
               Contact Information
             </h2>
             <p className={`mb-2 text-${COLORS.text}`}>
-              <strong>Address:</strong> Sridhi Enterprises Pvt ltd Pvt. Ltd.<br />
+              <strong>Address:</strong> Sridhi Enterprises Pvt Ltd Pvt. Ltd.<br />
               Second Floor, SCO-151, Omaxe City, Sector 19,<br />
               Sonipat, Haryana, India - 131001
             </p>

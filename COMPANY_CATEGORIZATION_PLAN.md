@@ -1,13 +1,13 @@
-# Sridhi Enterprises Pvt ltd - Company Categorization Plan
+# Sridhi Enterprises Pvt Ltd - Company Categorization Plan
 
 ## Executive Summary
 
-This document outlines a comprehensive plan to reorganize the Sridhi Enterprises Pvt ltd platform around a company-based categorization system. The goal is to create a clear, scalable structure that properly represents each partner company while maintaining excellent user experience and operational efficiency.
+This document outlines a comprehensive plan to reorganize the Sridhi Enterprises Pvt Ltd platform around a company-based categorization system. The goal is to create a clear, scalable structure that properly represents each partner company while maintaining excellent user experience and operational efficiency.
 
 ## Current State Analysis
 
 ### Project Overview
-- **Company**: Sridhi Enterprises Pvt ltd (Established 2024, Operating since 2019)
+- **Company**: Sridhi Enterprises Pvt Ltd (Established 2024, Operating since 2019)
 - **Business Model**: Distribution company serving government and paramilitary canteens
 - **Target Audience**: Central Armed Police Forces (CAPEs), Central Police Organizations (CPOs), State Forces, and their families
 - **Technology Stack**: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
@@ -224,7 +224,7 @@ export interface Product {
 /companies/seven-soft-india # 7Soft India company page
 /products                   # All products (existing)
 /products?company=pnb       # Products filtered by company
-/about                      # About Sridhi Enterprises Pvt ltd
+/about                      # About Sridhi Enterprises Pvt Ltd
 /services                   # Distribution services
 /contact                    # Contact information
 ```
@@ -332,9 +332,9 @@ export interface Product {
 
 ## Conclusion
 
-This company-based categorization approach will transform Sridhi Enterprises Pvt ltd into a professional, scalable platform that properly represents each partner company while providing an excellent user experience. The structured implementation plan ensures a smooth transition with minimal disruption to current operations.
+This company-based categorization approach will transform Sridhi Enterprises Pvt Ltd into a professional, scalable platform that properly represents each partner company while providing an excellent user experience. The structured implementation plan ensures a smooth transition with minimal disruption to current operations.
 
-The investment in this reorganization will pay dividends in terms of maintainability, scalability, and business growth opportunities. It positions Sridhi Enterprises Pvt ltd as a professional distribution platform that values its partner relationships and provides clear value to its government and paramilitary canteen customers.
+The investment in this reorganization will pay dividends in terms of maintainability, scalability, and business growth opportunities. It positions Sridhi Enterprises Pvt Ltd as a professional distribution platform that values its partner relationships and provides clear value to its government and paramilitary canteen customers.
 
 ---
 

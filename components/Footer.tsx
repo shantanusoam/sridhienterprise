@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="border-t border-[#D2B883] my-8"></div>
 
         <div className="py-4 text-center">
-          <p>&copy; {new Date().getFullYear()} Sridhi Enterprises Pvt ltd. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sridhi Enterprises Pvt Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -38,7 +38,7 @@ const Header = () => {
             </svg>
           </motion.div>
           <span className="text-2xl font-bold text-[color:var(--header-primary)]">
-            Sridhi Enterprises Pvt ltd
+            Sridhi Enterprises Pvt Ltd
           </span>
         </Link>
 

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import Image from 'next/image';
+import indiaPastelMap from './india_pastel_rich.png';
 
 // --- DATA ---
 const stats = [
@@ -116,7 +117,7 @@ export default function StatsAndServicesSection() {
                     Why Choose
                     <span className="inline-block w-3 md:w-5" /> {/* adds horizontal space */}
                     <br className="hidden md:block" />
-                    <span className="inline-block" style={{ marginLeft: '2px' }}>Sridhi Enterprises Pvt ltd?</span>
+                    <span className="inline-block" style={{ marginLeft: '2px' }}>Sridhi Enterprises Pvt Ltd?</span>
                 </h2>
                 <p className="text-lg text-[#3D1D07]/70 leading-relaxed mb-8">
                     With over a decade of experience, we have built a reputation for reliability, quality, and consistency in the distribution sector.
@@ -182,11 +183,11 @@ export default function StatsAndServicesSection() {
                 {/* The Image - Contained properly now */}
                 <div className="relative z-10 w-full max-w-sm">
                     <Image
-                        src="/india-map.svg"
-                        alt="India Map"
-                        width={400}
-                        height={450}
-                        className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 opacity-90"
+                        src={indiaPastelMap}
+                        alt="Political map of India showing states, union territories, and capitals in a pastel color scheme."
+                        className="h-auto w-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 opacity-90"
+                        sizes="(max-width: 768px) 100vw, 400px"
+                        priority={false}
                     />
                 </div>
             </motion.div>
