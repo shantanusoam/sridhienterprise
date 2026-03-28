@@ -159,7 +159,7 @@ export default function AboutSection() {
                     Established in 2012, we are a trusted distributor for serving  retired personnel of CAPFs (BSF, CRPF, CISF, ITBP, SSB, Assam Rifles, RPF, IB, SPG).
                   </p>
                   <p className="mt-2 text-sm italic">
-                    Serve the Kendriya Police Kalyan Bhandar (KPKB) network and 2200+ Subsidiary Bhandars.
+                    Serve the Kendriya Police Kalyan Bhandar (KPKB) network of 2200+ Canteens.
                   </p>
                   {/* <div className="mt-3 flex items-center gap-2">
                     <span className="text-xs font-semibold text-[#D2722F]">Registered officially in 2024</span>
