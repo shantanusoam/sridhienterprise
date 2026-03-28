@@ -135,7 +135,7 @@ export default function AboutSection() {
               variants={fadeIn}
             >
               <span className="text-[#D2722F] font-bold tracking-wider uppercase text-sm bg-[#D2722F]/10 px-3 py-1 rounded-full">
-                About Sridhi Enterprises pvt ltd
+                About Sridhi Enterprises Pvt ltd
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-[#3D1D07] mt-4 leading-tight">
                 Serving those who <br />

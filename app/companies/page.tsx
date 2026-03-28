@@ -9,7 +9,7 @@ import CompanyFilter from '@/components/companies/CompanyFilter';
 import { Building2, Package, Users, TrendingUp } from 'lucide-react';
 
 // export const metadata: Metadata = {
-//   title: 'Our Partner Companies | Sridhi Enterprises pvt ltd',
+//   title: 'Our Partner Companies | Sridhi Enterprises Pvt ltd',
 //   description: 'Explore our trusted partner companies and their premium products for government and paramilitary canteens.',
 // };
 

@@ -21,7 +21,7 @@ const About = () => {
           className="max-w-3xl mx-auto text-center"
         >
           <p className="text-lg mb-6">
-            Sridhi Enterprises pvt ltd is a trusted distributor connecting quality manufacturers to government services. With years of experience, we are committed to providing efficient and reliable distribution solutions for paramilitary and government canteens.
+            Sridhi Enterprises Pvt ltd is a trusted distributor connecting quality manufacturers to government services. With years of experience, we are committed to providing efficient and reliable distribution solutions for paramilitary and government canteens.
           </p>
           <p className="text-lg font-semibold">
             Our mission is to ensure the highest quality products reach our esteemed clients, maintaining the utmost standards of trust and efficiency in our services.

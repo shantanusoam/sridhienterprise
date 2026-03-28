@@ -87,7 +87,7 @@ const slides: Slide[] = [
   //   image: externalImage3, // Use imported image
   //   titleLines: ['Quality Without', 'Compromise'],
   //   subtitle: 'Reaching Every Corner with Precision and Care',
-  //   alt: 'Sridhi Enterprises pvt ltd product variety',
+  //   alt: 'Sridhi Enterprises Pvt ltd product variety',
   // },
   // {
   //   image: externalImage4,
